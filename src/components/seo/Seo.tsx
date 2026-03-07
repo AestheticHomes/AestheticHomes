@@ -17,7 +17,7 @@
  * <Seo
  *   title="Modular Kitchen Chennai"
  *   description="..."
- *   canonical="https://www.aesthetichomes.net/#services"
+ *   canonical="https://www.aesthetichomes.co.in/services"
  *   location="Adyar"          ← injects LocalBusiness schema for that area
  *   jsonLd={faqSchema(faqs)}  ← inject any extra schema
  * />
@@ -26,6 +26,41 @@
 import { Helmet } from 'react-helmet-async'
 import { SITE, CONTACT, SOCIAL, HOMEFIX, SERVICE_AREAS } from '@/lib/constants'
 import type { SeoProps } from '@/types'
+
+const PAGE_META = {
+  '/': {
+    title: 'Budget Interior Designer Chennai | 10 Years · 53 Projects',
+    description: `${SITE.name} — Chennai's trusted budget interior designer since ${SITE.founded}. Modular kitchens from ₹85k, wardrobes from ₹45k, full home interiors. ${SITE.projectCount} projects, ${SITE.rating}★ rated. GSTIN: ${SITE.gstin}.`,
+  },
+  '/projects': {
+    title: `Interior Design Projects Chennai — ${SITE.projectCount} Completed Projects`,
+    description: `Browse ${SITE.projectCount}+ completed interior design projects by Aesthetic Homes in Chennai. Modular kitchens, wardrobes, full home interiors across Adyar, OMR, Anna Nagar, Velachery and more. ${SITE.rating}★ rated.`,
+  },
+  '/services': {
+    title: 'Interior Design Services Chennai — Modular Kitchen, Wardrobe, Full Home',
+    description: `Budget interior design services in Chennai: modular kitchens from ₹85k, wardrobes from ₹45k, full home interiors, 3D visualization, renovation. Free site visit. ${SITE.rating}★ rated. GSTIN: ${SITE.gstin}.`,
+  },
+  '/about': {
+    title: `About Aesthetic Homes — ${SITE.yearsInBiz} Years of Interior Design in Chennai`,
+    description: `Aesthetic Homes has been delivering budget-friendly luxury interiors in Chennai since ${SITE.founded}. GSTIN: ${SITE.gstin}. ${SITE.projectCount} projects, ${SITE.rating}★ rated.`,
+  },
+  '/blog': {
+    title: 'Interior Design Blog — Tips, Ideas & Project Stories | Chennai',
+    description: `Interior design tips, modular kitchen ideas, wardrobe guides and before-after project stories from Aesthetic Homes Chennai. ${SITE.projectCount}+ projects, ${SITE.rating}★ rated.`,
+  },
+  '/contact': {
+    title: 'Contact Aesthetic Homes — Free Site Visit Chennai',
+    description: `Contact Aesthetic Homes for a free interior design site visit in Chennai. WhatsApp ${CONTACT.phone1Display} or ${CONTACT.phone2Display}. GSTIN: ${SITE.gstin}. Mon–Sat 9 AM–7 PM.`,
+  },
+  '/estimator': {
+    title: 'Interior Design Cost Estimator Chennai — Kitchen & Wardrobe Budget Calculator',
+    description: `Estimate interior design costs in Chennai with our interactive calculator. Modular kitchens, wardrobes — live 2D plan + instant cost breakdown. Aesthetic Homes, ${SITE.projectCount} projects, ${SITE.rating}★.`,
+  },
+  '/store': {
+    title: 'HomeFix Store — Modular Kitchens, Wardrobes & TV Units | Chennai',
+    description: 'Browse HomeFix modular furniture: kitchens from ₹85k, wardrobes from ₹45k, TV units from ₹18k. Flat-pack delivery 3–5 days, FREE installation in Chennai. By Aesthetic Homes.',
+  },
+} as const
 
 // ─── MASTER ORGANIZATION + WEBSITE SCHEMA ────────────────────────────────────
 // Injected on EVERY page. Tells Google everything about the business.
@@ -212,15 +247,22 @@ export default function Seo({
   article,
   jsonLd,
 }: SeoProps) {
-  const fullTitle = title
-    ? `${title} | ${SITE.name}`
-    : `${SITE.name} | Budget Interior Designer Chennai | 10 Years · ${SITE.projectCount} Projects`
-
-  const fullDesc = description ??
-    `${SITE.name} — Chennai's trusted budget interior designer since ${SITE.founded}. Modular kitchens from ₹85k, wardrobes from ₹45k, full home interiors. ${SITE.projectCount} projects, ${SITE.rating}★ rated. GSTIN: ${SITE.gstin}.`
-
   const canonicalUrl = canonical ?? SITE.url
   const imageUrl     = ogImage   ?? SITE.ogImage
+  const pathFromCanonical = canonicalUrl.startsWith(SITE.url)
+    ? canonicalUrl.slice(SITE.url.length)
+    : canonicalUrl
+  const cleanUrl = (() => {
+    const normalised = pathFromCanonical.replace(/\/+$/, '')
+    return normalised === '' ? '/' : normalised
+  })()
+  const pageMeta = PAGE_META[cleanUrl as keyof typeof PAGE_META] ?? PAGE_META['/']
+
+  const fullTitle = title
+    ? `${title} | ${SITE.name}`
+    : `${pageMeta.title} | ${SITE.name}`
+
+  const fullDesc = description ?? pageMeta.description
 
   // Build breadcrumb if this isn't the homepage
   const crumbs = canonical && canonical !== SITE.url

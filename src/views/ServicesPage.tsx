@@ -18,10 +18,10 @@
  * Pricing and descriptions live in src/lib/constants.ts → SERVICES
  */
 
-import Seo from '@/components/seo/Seo'
+import Seo, { buildFaqSchema } from '@/components/seo/Seo'
 import ServiceCard from '@/components/ui/ServiceCard'
 import { PageHero, ProcessStep, SectionHeader, CtaStrip } from '@/components/ui'
-import { SITE, CONTACT, SERVICES, PROCESS_STEPS } from '@/lib/constants'
+import { SITE, CONTACT, SERVICES, PROCESS_STEPS, SERVICES_FAQS } from '@/lib/constants'
 import { useReveal } from '@/lib/hooks'
 import type { ViewName } from '@/types'
 
@@ -37,7 +37,8 @@ export default function ServicesPage({ onNav: _onNav }: Props) {
       <Seo
         title="Interior Design Services Chennai — Modular Kitchen, Wardrobe, Full Home"
         description={`Budget interior design services in Chennai: modular kitchens from ₹85k, wardrobes from ₹45k, full home interiors, 3D visualization, renovation. Free site visit. ${SITE.rating}★ rated. GSTIN: ${SITE.gstin}. Call ${CONTACT.phone1Display}.`}
-        canonical={`${SITE.url}/#services`}
+        canonical={`${SITE.url}/services`}
+        jsonLd={buildFaqSchema([...SERVICES_FAQS])}
       />
 
       <div ref={revealRef}>

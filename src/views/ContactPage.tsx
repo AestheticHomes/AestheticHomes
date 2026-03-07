@@ -28,9 +28,9 @@
  */
 
 import { useState } from 'react'
-import Seo from '@/components/seo/Seo'
+import Seo, { buildFaqSchema } from '@/components/seo/Seo'
 import { PageHero } from '@/components/ui'
-import { SITE, CONTACT } from '@/lib/constants'
+import { SITE, CONTACT, CONTACT_FAQS } from '@/lib/constants'
 
 // ─── TYPES ────────────────────────────────────────────────────────────────────
 type FormState = {
@@ -107,7 +107,8 @@ export default function ContactPage() {
       <Seo
         title="Contact Aesthetic Homes — Free Site Visit Chennai"
         description={`Contact Aesthetic Homes for a free interior design site visit in Chennai. WhatsApp ${CONTACT.phone1Display} or ${CONTACT.phone2Display}. GSTIN: ${SITE.gstin}. Mon–Sat 9 AM–7 PM.`}
-        canonical={`${SITE.url}/#contact`}
+        canonical={`${SITE.url}/contact`}
+        jsonLd={buildFaqSchema([...CONTACT_FAQS])}
       />
 
       {/* ── 1. Hero ── */}

@@ -7,26 +7,21 @@
  * 1. Manages the active view state (SPA routing — no react-router needed)
  * 2. Renders <Layout> wrapping the active page component
  * 3. Shows a splash screen on first load (fades out after 1.8s)
- * 4. Handles hash-based URL routing (#home, #projects, etc.)
+ * 4. Handles path-based URL routing (/projects, /services, etc.)
  * 5. Handles browser back/forward via popstate
  * 6. Registers the service worker
  *
  * ROUTING
  * ───────
- * Hash-based SPA routing. Each view maps to a URL hash:
- *   / or #home     → <HomePage />
- *   #projects      → <ProjectsPage />
- *   #services      → <ServicesPage />
- *   #about         → <AboutPage />
- *   #blog          → <BlogPage />
- *   #contact       → <ContactPage />
- *   #estimator     → <EstimatorPage />
- *   #store         → <StorePage />
- *
- * WHY HASH ROUTING?
- * No server-side config needed. Works on any static host (Cloudflare Pages,
- * Netlify, Vercel). If you move to a server that supports rewrites, switch
- * to react-router with createBrowserRouter.
+ * Path-based SPA routing. Each view maps to a clean URL path:
+ *   /              → <HomePage />
+ *   /projects      → <ProjectsPage />
+ *   /services      → <ServicesPage />
+ *   /about         → <AboutPage />
+ *   /blog          → <BlogPage />
+ *   /contact       → <ContactPage />
+ *   /estimator     → <EstimatorPage />
+ *   /store         → <StorePage />
  *
  * SPLASH SCREEN
  * ─────────────
@@ -64,15 +59,27 @@ const VALID_VIEWS = new Set<ViewName>([
   'blog', 'contact', 'estimator', 'store',
 ])
 
-/** Parse hash string to ViewName, fallback to 'home' */
-const hashToView = (hash: string): ViewName => {
-  const v = hash.replace('#', '') as ViewName
-  return VALID_VIEWS.has(v) ? v : 'home'
+const VIEW_TO_PATH: Record<ViewName, string> = {
+  home: '/',
+  projects: '/projects',
+  services: '/services',
+  about: '/about',
+  blog: '/blog',
+  contact: '/contact',
+  estimator: '/estimator',
+  store: '/store',
+}
+
+/** Parse pathname to ViewName, fallback to 'home' */
+const pathToView = (pathname: string): ViewName => {
+  const segment = pathname.replace(/^\/+/, '').split('/')[0] as ViewName
+  if (!segment) return 'home'
+  return VALID_VIEWS.has(segment) ? segment : 'home'
 }
 
 // ─── COMPONENT ───────────────────────────────────────────────────────────────
 export default function App() {
-  const [view,        setView]        = useState<ViewName>(() => hashToView(window.location.hash))
+  const [view,        setView]        = useState<ViewName>(() => pathToView(window.location.pathname))
   const [splashDone,  setSplashDone]  = useState(false)
   const [splashHide,  setSplashHide]  = useState(false)
 
@@ -103,17 +110,17 @@ export default function App() {
 
   // ── Browser back/forward (popstate) ──
   useEffect(() => {
-    const handler = (e: PopStateEvent) => {
-      setView(hashToView((e.state?.view ?? '') as string))
+    const handler = () => {
+      setView(pathToView(window.location.pathname))
     }
     window.addEventListener('popstate', handler)
     return () => window.removeEventListener('popstate', handler)
   }, [])
 
-  /** Navigate to a view — updates state + URL hash + browser history */
+  /** Navigate to a view — updates state + URL path + browser history */
   const navigate = (v: ViewName) => {
     setView(v)
-    window.history.pushState({ view: v }, '', `#${v}`)
+    window.history.pushState({ view: v }, '', VIEW_TO_PATH[v])
   }
 
   // ── Page components map ──

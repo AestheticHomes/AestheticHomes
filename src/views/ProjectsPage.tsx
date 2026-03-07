@@ -61,7 +61,7 @@ export default function ProjectsPage() {
       <Seo
         title={`Interior Design Projects Chennai — ${SITE.projectCount} Completed Projects`}
         description={`Browse ${SITE.projectCount}+ completed interior design projects by Aesthetic Homes in Chennai. Modular kitchens, wardrobes, full home interiors across Adyar, OMR, Anna Nagar, Velachery and more. ${SITE.rating}★ rated.`}
-        canonical={`${SITE.url}/#projects`}
+        canonical={`${SITE.url}/projects`}
       />
 
       <div ref={revealRef}>

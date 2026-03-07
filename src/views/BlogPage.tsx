@@ -58,7 +58,7 @@ export default function BlogPage() {
       <Seo
         title="Interior Design Blog — Tips, Ideas & Project Stories | Chennai"
         description={`Interior design tips, modular kitchen ideas, wardrobe guides and before-after project stories from Aesthetic Homes Chennai. ${SITE.projectCount}+ projects, ${SITE.rating}★ rated.`}
-        canonical={`${SITE.url}/#blog`}
+        canonical={`${SITE.url}/blog`}
       />
 
       <div ref={revealRef}>

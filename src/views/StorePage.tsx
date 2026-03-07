@@ -85,7 +85,7 @@ export default function StorePage() {
       <Seo
         title="HomeFix Store — Modular Kitchens, Wardrobes & TV Units | Chennai"
         description="Browse HomeFix modular furniture: kitchens from ₹85k, wardrobes from ₹45k, TV units from ₹18k. Flat-pack delivery 3–5 days, FREE installation in Chennai. By Aesthetic Homes."
-        canonical={`${SITE.url}/#store`}
+        canonical={`${SITE.url}/store`}
       />
 
       {/* ── 1. Hero ── */}

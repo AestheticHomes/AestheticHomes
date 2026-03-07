@@ -18,9 +18,9 @@ export const SITE = {
   legalName:     'Aesthetic Homes Interiors and Engineering Services',
   tagline:       '10 Years. 53 Homes. Crafted for Life.',
   taglineSub:    'Budget-Friendly Luxury Interiors Across Chennai',
-  url:           'https://www.aesthetichomes.net',
-  logo:          'https://www.aesthetichomes.net/icons/icon-192.png',
-  ogImage:       'https://www.aesthetichomes.net/og-image.jpg',
+  url:           'https://www.aesthetichomes.co.in',
+  logo:          'https://www.aesthetichomes.co.in/icons/icon-192.png',
+  ogImage:       'https://www.aesthetichomes.co.in/og-image.jpg',
   gstin:         '33BNMPA8199N1ZB',
   founded:       2015,
   yearsInBiz:    10,
@@ -243,5 +243,54 @@ export const HOME_FAQS = [
   {
     q: 'Can I order modular furniture directly?',
     a: `Yes — through HomeFix (homefix.co.in), our digital modular furniture platform. Browse, plan in 3D, and order kitchens, wardrobes and TV units with free installation in Chennai.`,
+  },
+] as const
+
+export const SERVICES_FAQS = [
+  {
+    q: 'What interior design services do you offer in Chennai?',
+    a: 'Aesthetic Homes offers modular kitchens, custom wardrobes, TV units, false ceilings, full home interior design, renovation and complete turnkey execution across Chennai.',
+  },
+  {
+    q: 'What is included in a modular kitchen installation?',
+    a: 'Our modular kitchen service includes free site measurement, 3D design, supply of cabinets, countertop, hardware, and installation. Appliances and plumbing are separate.',
+  },
+  {
+    q: 'Do you handle full home interior design in Chennai?',
+    a: 'Yes. We handle complete turnkey interior projects — from design and material selection to carpentry, painting, electrical and handover. We have completed 53+ full home projects across Chennai.',
+  },
+  {
+    q: 'How much does a wardrobe cost in Chennai?',
+    a: 'A custom wardrobe starts from ₹45,000 for a 6ft wide, 7ft tall sliding door unit. Price depends on size, material and finish. We provide a detailed line-item quote.',
+  },
+] as const
+
+export const CONTACT_FAQS = [
+  {
+    q: 'How do I book a free site visit with Aesthetic Homes?',
+    a: 'Call or WhatsApp +91 73973 30591 or fill the contact form. We visit anywhere in Chennai and within 100km — at no charge, with zero commitment.',
+  },
+  {
+    q: 'What happens during the free site visit?',
+    a: 'Our designer visits your home, takes measurements, understands your requirements and style preferences. Within 3–5 days we share a 3D design concept and transparent cost estimate.',
+  },
+  {
+    q: 'Do I need to pay anything before signing a contract?',
+    a: 'No. The site visit, 3D design and quotation are completely free. You only pay after reviewing and approving the final design and cost breakdown.',
+  },
+] as const
+
+export const ABOUT_FAQS = [
+  {
+    q: 'How long has Aesthetic Homes been in business?',
+    a: 'Aesthetic Homes was founded in 2015 and has over 10 years of experience in Chennai. We have completed 53+ projects ranging from single kitchens to complete 4BHK homes.',
+  },
+  {
+    q: 'Who are the designers at Aesthetic Homes?',
+    a: 'Our core team is a husband-and-wife duo — a civil engineer handling technical drawings and design, and an execution specialist managing on-site delivery and quality.',
+  },
+  {
+    q: 'What makes Aesthetic Homes different from other interior designers in Chennai?',
+    a: 'We combine professional design with direct execution — no third-party contractors. Every project is managed by our own team, ensuring quality control at every stage.',
   },
 ] as const

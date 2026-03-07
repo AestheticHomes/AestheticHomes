@@ -61,7 +61,7 @@ export default function EstimatorPage() {
       <Seo
         title="Interior Design Cost Estimator Chennai — Kitchen & Wardrobe Budget Calculator"
         description={`Estimate interior design costs in Chennai with our interactive calculator. Modular kitchens, wardrobes — live 2D plan + instant cost breakdown. Aesthetic Homes, ${SITE.projectCount} projects, ${SITE.rating}★.`}
-        canonical={`${SITE.url}/#estimator`}
+        canonical={`${SITE.url}/estimator`}
       />
 
       <PageHero

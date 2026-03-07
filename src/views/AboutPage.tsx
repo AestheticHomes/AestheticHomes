@@ -23,11 +23,11 @@
  * All other content is static from constants.ts.
  */
 
-import Seo from '@/components/seo/Seo'
+import Seo, { buildFaqSchema } from '@/components/seo/Seo'
 import { PageHero, StatCard, SectionHeader, CtaStrip, Spinner } from '@/components/ui'
 import { useSanity } from '@/lib/hooks'
 import { QUERIES, imgUrl } from '@/lib/sanity'
-import { SITE, CONTACT, SOCIAL } from '@/lib/constants'
+import { SITE, CONTACT, SOCIAL, ABOUT_FAQS } from '@/lib/constants'
 import { useReveal } from '@/lib/hooks'
 import type { TeamMember, ViewName } from '@/types'
 
@@ -53,7 +53,8 @@ export default function AboutPage({ onNav: _onNav }: Props = {}) {
       <Seo
         title={`About Aesthetic Homes — ${SITE.yearsInBiz} Years of Interior Design in Chennai`}
         description={`Aesthetic Homes has been delivering budget-friendly luxury interiors in Chennai since ${SITE.founded}. GSTIN: ${SITE.gstin}. ${SITE.projectCount} projects, ${SITE.rating}★ rated. Registered at ${CONTACT.address.full}.`}
-        canonical={`${SITE.url}/#about`}
+        canonical={`${SITE.url}/about`}
+        jsonLd={buildFaqSchema([...ABOUT_FAQS])}
       />
 
       <div ref={revealRef}>
