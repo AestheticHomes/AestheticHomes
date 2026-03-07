@@ -3,6 +3,7 @@
 
 import { expandShape }    from '@/components/estimator/blueprintSchema/interpreter'
 import { kitchenShapes }  from '@/components/estimator/blueprintSchema/kitchenShapes'
+import type { KitchenShapeKey } from '@/components/estimator/blueprintSchema/kitchenShapes'
 import PanZoomViewport    from '@/components/estimator/common/PanZoomViewport'
 import useEstimator       from '@/components/estimator/store/estimatorStore'
 import React, { useMemo } from 'react'
@@ -132,8 +133,11 @@ function KitchenSvg2DInner() {
     C: (kitchenLengths?.C ?? 10) * FT,
   }), [kitchenLengths])
 
-  const shapeKey = ((kitchenShape as string) || 'linear').toLowerCase() as keyof typeof kitchenShapes
-  const schema   = kitchenShapes[shapeKey] || kitchenShapes.linear
+  const normalizedShape = ((kitchenShape as string) || 'linear').toLowerCase()
+  const shapeKey: KitchenShapeKey = normalizedShape in kitchenShapes
+    ? (normalizedShape as KitchenShapeKey)
+    : 'linear'
+  const schema   = kitchenShapes[shapeKey]
 
   const { walls, appliances } = expandShape(schema, dims)
 
