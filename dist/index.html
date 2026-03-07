@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+
+  <!-- PWA / App shell -->
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Aesthetic Homes" />
+  <meta name="application-name" content="Aesthetic Homes" />
+  <meta name="theme-color" content="#0F1923" />
+  <meta name="msapplication-TileColor" content="#0F1923" />
+  <meta name="msapplication-tap-highlight" content="no" />
+
+  <!-- Default SEO — each page overrides via react-helmet-async -->
+  <title>Aesthetic Homes | Budget Interior Designer Chennai | 10 Years · 53 Projects</title>
+  <meta name="description" content="Aesthetic Homes — Chennai's trusted budget interior designer since 2015. Modular kitchens ₹85k, wardrobes ₹45k, full home interiors. 53 projects, 4.9★ Google rated. GSTIN: 33BNMPA8199N1ZB. Free site visit." />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <link rel="canonical" href="https://www.aesthetichomes.net/" />
+
+  <!-- Manifest & Icons -->
+  <link rel="manifest" href="/manifest.json" />
+  <link rel="icon" type="image/png" sizes="96x96" href="/icons/icon-96.png" />
+  <link rel="apple-touch-icon" sizes="192x192" href="/icons/icon-192.png" />
+
+  <!-- Performance: preconnect to external origins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://cdn.sanity.io" />
+
+  <!-- Fonts: Playfair Display (luxury serif) + Plus Jakarta Sans (clean sans) -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <script>
+    (function clearStaleLocalServiceWorkers() {
+      var host = window.location.hostname
+      var isLocal = host === 'localhost' || host === '127.0.0.1' || host === '[::1]'
+      if (!isLocal || !('serviceWorker' in navigator)) return
+
+      navigator.serviceWorker.getRegistrations()
+        .then(function (registrations) {
+          if (!registrations.length) return
+
+          return Promise.all(registrations.map(function (registration) {
+            return registration.unregister()
+          }))
+            .then(function () {
+              if (!('caches' in window)) return
+              return caches.keys().then(function (keys) {
+                return Promise.all(keys.map(function (key) { return caches.delete(key) }))
+              })
+            })
+            .then(function () {
+              window.location.reload()
+            })
+        })
+        .catch(function () {})
+    })()
+  </script>
+  <script type="module" crossorigin src="/assets/index-B2u_5Q30.js"></script>
+<script id="vite-plugin-pwa:register-sw" src="/registerSW.js"></script></head>
+<body>
+  <div id="root"></div>
+</body>
+</html>

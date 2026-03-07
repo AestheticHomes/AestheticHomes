@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Offline — Aesthetic Homes</title>
+  <style>
+    :root { --navy:#0F1923; --gold:#C8A96E; --cream:#F4EFE8; --muted:rgba(244,239,232,0.5); }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    body { background:var(--navy); color:var(--cream); font-family:'Plus Jakarta Sans',sans-serif; min-height:100svh; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:2rem; text-align:center; }
+    .icon { font-size:3.5rem; margin-bottom:1.5rem; opacity:.5; }
+    h1 { font-family:Georgia,serif; font-size:2rem; font-weight:400; margin-bottom:1rem; }
+    p { font-size:.875rem; color:var(--muted); max-width:38ch; line-height:1.8; margin-bottom:2rem; }
+    .btn { background:var(--gold); color:var(--navy); font-family:inherit; font-size:.72rem; font-weight:600; letter-spacing:.12em; text-transform:uppercase; padding:.85rem 2.5rem; border:none; cursor:pointer; }
+    .contact { margin-top:2rem; font-size:.78rem; color:var(--muted); }
+    .contact a { color:var(--gold); }
+  </style>
+</head>
+<body>
+  <div class="icon">🏠</div>
+  <h1>You're offline</h1>
+  <p>No internet connection. Cached pages are still accessible. We'll reconnect when you're back online.</p>
+  <button class="btn" onclick="location.reload()">Try Again</button>
+  <div class="contact">
+    Urgent? Call us: <a href="tel:+917397330591">+91 73973 30591</a>
+  </div>
+</body>
+</html>
