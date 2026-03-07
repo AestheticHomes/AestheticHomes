@@ -1,10 +1,10 @@
 /**
  * @file src/views/StorePage.tsx
- * @description HomeFix Store showcase — bridges aesthetichomes.net to homefix.co.in.
+ * @description HomeFix Store showcase — bridges aesthetichomes.co.in to homefix.co.in
  *
  * PURPOSE
  * ───────
- * Creates a cross-domain SEO signal between aesthetichomes.net and homefix.co.in.
+ * Creates a cross-domain SEO signal between aesthetichomes.co.in and homefix.co.in.
  * Shows HomeFix product categories with deep-links to the live store.
  * Shared Sanity project images (same CDN URLs) + subOrganization schema + this
  * page reinforce to Google that both domains belong to the same brand.
@@ -18,7 +18,7 @@
  *
  * SEO
  * ───
- * • Page canonical: aesthetichomes.net/#store
+ * • Page canonical: aesthetichomes.co.in/store
  * • subOrganization in orgSchema (Seo.tsx) links HomeFix as child org
  * • All outbound links use rel="noopener noreferrer" + UTM params (future)
  *

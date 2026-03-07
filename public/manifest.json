@@ -12,8 +12,8 @@
   "lang": "en-IN",
   "categories": ["lifestyle", "business"],
   "shortcuts": [
-    { "name": "Free Quote",     "url": "/#contact",   "description": "Get a free interior design quote" },
-    { "name": "View Projects",  "url": "/#projects",  "description": "Browse completed projects" },
+    { "name": "Free Quote",     "url": "/contact",   "description": "Get a free interior design quote" },
+    { "name": "View Projects",  "url": "/projects",  "description": "Browse completed projects" },
     { "name": "HomeFix Store",  "url": "https://www.homefix.co.in/store", "description": "Shop modular furniture" }
   ],
   "icons": [

@@ -32,13 +32,13 @@ export const SITE = {
 // ─── CONTACT ──────────────────────────────────────────────────────────────────
 export const CONTACT = {
   phone1:        '+917397330591',
-  phone2:        '+917200091892',
+  
   phone1Display: '+91 73973 30591',
-  phone2Display: '+91 72000 91892',
+  
   /** WhatsApp deep-link — pre-filled message */
   waLink1: 'https://wa.me/917397330591?text=Hi%20Aesthetic%20Homes%2C%20I%27d%20like%20a%20free%20site%20visit',
-  waLink2: 'https://wa.me/917200091892?text=Hi%20Aesthetic%20Homes%2C%20I%27d%20like%20a%20free%20site%20visit',
-  email:   'hello@aesthetichomes.net',
+  
+  email:   'admin@aesthetichomes.co.in',
   address: {
     street:  '10, Gokul Brindavan Flats, United India Colony',
     area:    'Kodambakkam',

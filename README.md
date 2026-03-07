@@ -1,6 +1,6 @@
 # Aesthetic Homes — Web Application
 
-**aesthetichomes.net** | Budget interior designer, Chennai | Est. 2015
+**aesthetichomes.co.in** | Budget interior designer, Chennai | Est. 2015
 
 ---
 
@@ -138,7 +138,7 @@ npm install
 
 # Add CORS origins in sanity.io/manage → API:
 #   http://localhost:5173
-#   https://www.aesthetichomes.net
+#   https://www.aesthetichomes.co.in
 ```
 
 ### 3. Run development server
