@@ -1,6 +1,14 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { VitePWA } from 'vite-plugin-pwa'
+import { mkdirSync } from 'node:fs'
+import { resolve } from 'node:path'
+
+const codexTempDir = resolve('.codex-tmp')
+mkdirSync(codexTempDir, { recursive: true })
+process.env.TMPDIR = codexTempDir
+process.env.TEMP = codexTempDir
+process.env.TMP = codexTempDir
 
 export default defineConfig({
   plugins: [
