@@ -92,20 +92,26 @@ export default function App() {
 
   // ── Service worker registration ──
   useEffect(() => {
+    if (typeof window === 'undefined') return
     if (!('serviceWorker' in navigator)) return
 
-    if (import.meta.env.DEV) {
-      // Prevent stale cached shells from taking over localhost during development.
-      navigator.serviceWorker
-        .getRegistrations()
-        .then((registrations) => Promise.all(registrations.map((registration) => registration.unregister())))
-        .catch((err) => console.warn('[SW:DEV]', err))
-      return
+    const runSwRegistration = async () => {
+      try {
+        if (import.meta.env.DEV) {
+          // Prevent stale cached shells from taking over localhost during development.
+          const registrations = await navigator.serviceWorker.getRegistrations()
+          await Promise.all(registrations.map((registration) => registration.unregister()))
+          return
+        }
+
+        await navigator.serviceWorker.register('/sw.js')
+      } catch (err) {
+        // SW registration should fail silently in unsupported/restricted environments.
+        console.warn('[SW]', err)
+      }
     }
 
-    navigator.serviceWorker
-      .register('/sw.js')
-      .catch((err) => console.warn('[SW]', err))
+    void runSwRegistration()
   }, [])
 
   // ── Browser back/forward (popstate) ──

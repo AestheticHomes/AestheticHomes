@@ -14,6 +14,7 @@ export default defineConfig({
   plugins: [
     react(),
     VitePWA({
+      injectRegister: false,
       registerType: 'prompt',
       includeAssets: ['favicon.ico', 'icons/*.png', 'offline.html'],
       manifest: false, // using our own public/manifest.json

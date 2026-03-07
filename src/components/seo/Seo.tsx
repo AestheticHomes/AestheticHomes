@@ -187,6 +187,8 @@ const localBizSchema = (area: string) => ({
     '@type':       'AggregateRating',
     ratingValue:   String(SITE.rating),
     reviewCount:   String(SITE.reviewCount),
+    bestRating:    '5',
+    worstRating:   '1',
   },
   parentOrganization: { '@id': `${SITE.url}/#organization` },
 })
