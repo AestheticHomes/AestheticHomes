@@ -55,12 +55,11 @@ export default function WhatsAppButton() {
       aria-label="WhatsApp contact options"
     >
 
-      {/* ── Two-number menu ── */}
+      {/* ── WhatsApp menu ── */}
       {showMenu && (
-        <div className="wa-float__menu" role="menu" aria-label="Choose a WhatsApp number">
+        <div className="wa-float__menu" role="menu" aria-label="WhatsApp contact">
           {[
             { href: CONTACT.waLink1, display: CONTACT.phone1Display },
-            { href: CONTACT.waLink2, display: CONTACT.phone2Display },
           ].map((num) => (
             <a
               key={num.href}

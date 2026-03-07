@@ -46,7 +46,7 @@ type FormState = {
 const CONTACT_CARDS = [
   {
     icon: '📞', label: 'Phone / WhatsApp',
-    value: `${CONTACT.phone1Display}  ·  ${CONTACT.phone2Display}`,
+    value: CONTACT.phone1Display,
     href: `tel:${CONTACT.phone1}`,
   },
   {
@@ -106,7 +106,7 @@ export default function ContactPage() {
     <>
       <Seo
         title="Contact Aesthetic Homes — Free Site Visit Chennai"
-        description={`Contact Aesthetic Homes for a free interior design site visit in Chennai. WhatsApp ${CONTACT.phone1Display} or ${CONTACT.phone2Display}. GSTIN: ${SITE.gstin}. Mon–Sat 9 AM–7 PM.`}
+        description={`Contact Aesthetic Homes for a free interior design site visit in Chennai. WhatsApp ${CONTACT.phone1Display}. GSTIN: ${SITE.gstin}. Mon–Sat 9 AM–7 PM.`}
         canonical={`${SITE.url}/contact`}
         jsonLd={buildFaqSchema([...CONTACT_FAQS])}
       />

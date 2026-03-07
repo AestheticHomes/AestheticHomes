@@ -3,7 +3,7 @@
  * @description Single source of truth for all business data.
  *
  * ┌─ HOW TO UPDATE ────────────────────────────────────────────────────────┐
- * │  Change phone number?  → edit CONTACT.phone1 / phone2                 │
+ * │  Change phone number?  → edit CONTACT.phone1                           │
  * │  New project count?    → edit SITE.projectCount                       │
  * │  New service?          → add to SERVICES array                        │
  * │  New service area?     → add to SERVICE_AREAS array                   │
@@ -32,12 +32,9 @@ export const SITE = {
 // ─── CONTACT ──────────────────────────────────────────────────────────────────
 export const CONTACT = {
   phone1:        '+917397330591',
-  
   phone1Display: '+91 73973 30591',
-  
   /** WhatsApp deep-link — pre-filled message */
   waLink1: 'https://wa.me/917397330591?text=Hi%20Aesthetic%20Homes%2C%20I%27d%20like%20a%20free%20site%20visit',
-  
   email:   'admin@aesthetichomes.co.in',
   address: {
     street:  '10, Gokul Brindavan Flats, United India Colony',

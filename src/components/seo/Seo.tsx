@@ -50,7 +50,7 @@ const PAGE_META = {
   },
   '/contact': {
     title: 'Contact Aesthetic Homes — Free Site Visit Chennai',
-    description: `Contact Aesthetic Homes for a free interior design site visit in Chennai. WhatsApp ${CONTACT.phone1Display} or ${CONTACT.phone2Display}. GSTIN: ${SITE.gstin}. Mon–Sat 9 AM–7 PM.`,
+    description: `Contact Aesthetic Homes for a free interior design site visit in Chennai. WhatsApp ${CONTACT.phone1Display}. GSTIN: ${SITE.gstin}. Mon–Sat 9 AM–7 PM.`,
   },
   '/estimator': {
     title: 'Interior Design Cost Estimator Chennai — Kitchen & Wardrobe Budget Calculator',
@@ -85,7 +85,7 @@ const orgSchema = {
       foundingDate: String(SITE.founded),
       taxID:        SITE.gstin,
       vatID:        SITE.gstin,
-      telephone:    [CONTACT.phone1Display, CONTACT.phone2Display],
+      telephone:    [CONTACT.phone1Display],
       email:        CONTACT.email,
       address: {
         '@type':           'PostalAddress',

@@ -151,7 +151,6 @@ export default function AboutPage({ onNav: _onNav }: Props = {}) {
 
                 <div style={{ display:'flex', flexDirection:'column', gap:'var(--sp-3)', marginBottom:'var(--sp-5)' }}>
                   <a href={`tel:${CONTACT.phone1}`} style={{ color:'var(--c-gold)', fontWeight:'var(--fw-semi)' }} aria-label={`Call ${CONTACT.phone1Display}`}>{CONTACT.phone1Display}</a>
-                  <a href={`tel:${CONTACT.phone2}`} style={{ color:'var(--c-gold)', fontWeight:'var(--fw-semi)' }} aria-label={`Call ${CONTACT.phone2Display}`}>{CONTACT.phone2Display}</a>
                   <a href={`mailto:${CONTACT.email}`} style={{ color:'var(--c-gold)', fontWeight:'var(--fw-semi)' }} aria-label="Email us">{CONTACT.email}</a>
                 </div>
 

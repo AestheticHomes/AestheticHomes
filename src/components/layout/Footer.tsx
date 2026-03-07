@@ -129,7 +129,6 @@ export default function Footer({ onNav }: FooterProps) {
           <div className="site-footer__col-title">Contact</div>
           <div className="site-footer__col-links">
             <a href={`tel:${CONTACT.phone1}`} aria-label={`Call ${CONTACT.phone1Display}`}>{CONTACT.phone1Display}</a>
-            <a href={`tel:${CONTACT.phone2}`} aria-label={`Call ${CONTACT.phone2Display}`}>{CONTACT.phone2Display}</a>
             <a href={`mailto:${CONTACT.email}`} aria-label="Email us">{CONTACT.email}</a>
             <address style={{ fontStyle:'normal', fontSize:'var(--fs-xs)', color:'var(--c-text-inv-dim)', lineHeight:'var(--lh-loose)' }}>
               {CONTACT.address.full}
