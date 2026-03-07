@@ -18,7 +18,7 @@
  * Pricing and descriptions live in src/lib/constants.ts → SERVICES
  */
 
-import Seo, { buildFaqSchema } from '@/components/seo/Seo'
+import Seo, { buildFaqSchema, buildBreadcrumbSchema } from '@/components/seo/Seo'
 import ServiceCard from '@/components/ui/ServiceCard'
 import { PageHero, ProcessStep, SectionHeader, CtaStrip } from '@/components/ui'
 import { SITE, CONTACT, SERVICES, PROCESS_STEPS, SERVICES_FAQS } from '@/lib/constants'
@@ -38,10 +38,29 @@ export default function ServicesPage({ onNav: _onNav }: Props) {
         title="Interior Design Services Chennai — Modular Kitchen, Wardrobe, Full Home"
         description={`Budget interior design services in Chennai: modular kitchens from ₹85k, wardrobes from ₹45k, full home interiors, 3D visualization, renovation. Free site visit. ${SITE.rating}★ rated. GSTIN: ${SITE.gstin}. Call ${CONTACT.phone1Display}.`}
         canonical={`${SITE.url}/services`}
-        jsonLd={buildFaqSchema([...SERVICES_FAQS])}
+        jsonLd={[
+          buildFaqSchema([...SERVICES_FAQS]),
+          buildBreadcrumbSchema([
+            { name: 'Home', url: SITE.url },
+            { name: 'Services', url: `${SITE.url}/services` },
+            { name: 'Interior Design Services', url: `${SITE.url}/services` },
+          ]),
+        ]}
       />
 
       <div ref={revealRef}>
+
+        <nav aria-label="breadcrumb" className="sec" style={{ paddingTop: 'var(--sp-5)', paddingBottom: 'var(--sp-3)' }}>
+          <div className="container">
+            <ol style={{ display: 'flex', alignItems: 'center', gap: 'var(--sp-2)', color: 'var(--c-text-muted)', fontSize: 'var(--fs-sm)', listStyle: 'none', padding: 0, margin: 0 }}>
+              <li><a href="/" style={{ color: 'inherit' }}>Home</a></li>
+              <li aria-hidden="true">/</li>
+              <li><a href="/services" style={{ color: 'inherit' }}>Services</a></li>
+              <li aria-hidden="true">/</li>
+              <li aria-current="page" style={{ color: 'var(--c-text)' }}>Interior Design Services</li>
+            </ol>
+          </div>
+        </nav>
 
         {/* ── Hero ── */}
         <PageHero
@@ -60,6 +79,11 @@ export default function ServicesPage({ onNav: _onNav }: Props) {
                   <ServiceCard service={{ ...svc }} />
                 </div>
               ))}
+            </div>
+            <div style={{ marginTop: 'var(--sp-6)', display: 'flex', gap: 'var(--sp-3)', flexWrap: 'wrap' }}>
+              <a href="/projects" className="btn btn--outline-navy btn--sm">See Related Projects</a>
+              <a href="/blog" className="btn btn--outline-navy btn--sm">Read Service Guides</a>
+              <a href="/contact" className="btn btn--outline-navy btn--sm">Book Free Consultation</a>
             </div>
           </div>
         </section>

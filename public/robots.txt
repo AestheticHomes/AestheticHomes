@@ -1,6 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /icons/
-Disallow: /sw.js
-Disallow: /offline.html
-Sitemap: https://www.aesthetichomes.co.in/sitemap.xml
+
+Sitemap: https://aesthetichomes.co.in/sitemap.xml

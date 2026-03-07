@@ -127,6 +127,11 @@ export default function BlogPage() {
                 ))}
               </div>
             )}
+
+            <div style={{ marginTop: 'var(--sp-8)', display: 'flex', gap: 'var(--sp-3)', flexWrap: 'wrap' }}>
+              <a href="/services" className="btn btn--outline-navy btn--sm">Explore Interior Services</a>
+              <a href="/projects" className="btn btn--outline-navy btn--sm">See Project Portfolio</a>
+            </div>
           </div>
         </section>
 

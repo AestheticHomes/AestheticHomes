@@ -17,7 +17,7 @@
  * <Seo
  *   title="Modular Kitchen Chennai"
  *   description="..."
- *   canonical="https://www.aesthetichomes.co.in/services"
+ *   canonical="https://aesthetichomes.co.in/services"
  *   location="Adyar"          ← injects LocalBusiness schema for that area
  *   jsonLd={faqSchema(faqs)}  ← inject any extra schema
  * />
@@ -29,8 +29,8 @@ import type { SeoProps } from '@/types'
 
 const PAGE_META = {
   '/': {
-    title: 'Budget Interior Designer Chennai | 10 Years · 53 Projects',
-    description: `${SITE.name} — Chennai's trusted budget interior designer since ${SITE.founded}. Modular kitchens from ₹85k, wardrobes from ₹45k, full home interiors. ${SITE.projectCount} projects, ${SITE.rating}★ rated. GSTIN: ${SITE.gstin}.`,
+    title: 'Interior Design & Home Renovation Services in Chennai and Nellore',
+    description: 'Interior design and home renovation services in Chennai and Nellore by Aesthetic Homes.',
   },
   '/projects': {
     title: `Interior Design Projects Chennai — ${SITE.projectCount} Completed Projects`,
@@ -38,7 +38,7 @@ const PAGE_META = {
   },
   '/services': {
     title: 'Interior Design Services Chennai — Modular Kitchen, Wardrobe, Full Home',
-    description: `Budget interior design services in Chennai: modular kitchens from ₹85k, wardrobes from ₹45k, full home interiors, 3D visualization, renovation. Free site visit. ${SITE.rating}★ rated. GSTIN: ${SITE.gstin}.`,
+    description: `Interior design and home renovation services in Chennai and Nellore by Aesthetic Homes. Modular kitchens from ₹85k, wardrobes from ₹45k, full home interiors, 3D visualization and renovation.`,
   },
   '/about': {
     title: `About Aesthetic Homes — ${SITE.yearsInBiz} Years of Interior Design in Chennai`,
@@ -50,7 +50,7 @@ const PAGE_META = {
   },
   '/contact': {
     title: 'Contact Aesthetic Homes — Free Site Visit Chennai',
-    description: `Contact Aesthetic Homes for a free interior design site visit in Chennai. WhatsApp ${CONTACT.phone1Display}. GSTIN: ${SITE.gstin}. Mon–Sat 9 AM–7 PM.`,
+    description: `Contact Aesthetic Homes for a free interior design and renovation site visit in Chennai or Nellore. WhatsApp ${CONTACT.phone1Display}.`,
   },
   '/estimator': {
     title: 'Interior Design Cost Estimator Chennai — Kitchen & Wardrobe Budget Calculator',
@@ -72,7 +72,7 @@ const orgSchema = {
       '@id':         `${SITE.url}/#organization`,
       name:          SITE.name,
       legalName:     SITE.legalName,
-      alternateName: ['Aesthetic Homes Chennai', 'Aesthetic Homes Interiors'],
+      alternateName: ['Aesthetic Homes Chennai', 'Aesthetic Homes Nellore', 'Aesthetic Homes Interiors'],
       url:           SITE.url,
       logo: {
         '@type': 'ImageObject',
@@ -81,7 +81,7 @@ const orgSchema = {
         height:  192,
       },
       image:       SITE.ogImage,
-      description: `${SITE.name} — Chennai's trusted budget interior designer since ${SITE.founded}. ${SITE.projectCount} projects, ${SITE.rating}★ rated. GSTIN: ${SITE.gstin}. Modular kitchens, wardrobes, full home interiors, 100km around Chennai.`,
+      description: `${SITE.name} provides interior design and home renovation services in Chennai and Nellore. Modular kitchens, wardrobes, TV units and full home interiors with turnkey execution.`,
       foundingDate: String(SITE.founded),
       taxID:        SITE.gstin,
       vatID:        SITE.gstin,
@@ -203,6 +203,9 @@ const breadcrumbSchema = (items: { name: string; url: string }[]) => ({
   })),
 })
 
+/** Builds a BreadcrumbList JSON-LD object */
+export const buildBreadcrumbSchema = (items: { name: string; url: string }[]) => breadcrumbSchema(items)
+
 // ─── FAQ SCHEMA HELPER (call from page components) ────────────────────────────
 /**
  * Builds a FAQPage JSON-LD object.
@@ -247,7 +250,8 @@ export default function Seo({
   article,
   jsonLd,
 }: SeoProps) {
-  const canonicalUrl = canonical ?? SITE.url
+  const canonicalInput = canonical ?? SITE.url
+  const canonicalUrl = canonicalInput === SITE.url ? `${SITE.url}/` : canonicalInput
   const imageUrl     = ogImage   ?? SITE.ogImage
   const pathFromCanonical = canonicalUrl.startsWith(SITE.url)
     ? canonicalUrl.slice(SITE.url.length)
@@ -277,10 +281,7 @@ export default function Seo({
       <title>{fullTitle}</title>
       <meta name="description" content={fullDesc} />
       <link rel="canonical"    href={canonicalUrl} />
-      <meta name="robots" content={noIndex
-        ? 'noindex, nofollow'
-        : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'
-      } />
+      <meta name="robots" content={noIndex ? 'noindex, nofollow' : 'index, follow'} />
 
       {/* Geo meta — local SEO signals */}
       <meta name="geo.region"    content="IN-TN" />

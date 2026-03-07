@@ -38,11 +38,14 @@ interface FooterProps {
 /** Quick-link config — label maps to ViewName for onNav */
 const SERVICE_LINKS = ['Modular Kitchen','Wardrobes','Full Home Interiors','TV Units','3D Visualization','Renovation']
 const COMPANY_LINKS: { label: string; view: ViewName }[] = [
+  { label:'Home',          view:'home' },
+  { label:'Services',      view:'services' },
   { label:'About Us',      view:'about' },
   { label:'Projects',      view:'projects' },
   { label:'Blog',          view:'blog' },
   { label:'Contact',       view:'contact' },
   { label:'Cost Estimator',view:'estimator' },
+  { label:'HomeFix Store', view:'store' },
 ]
 
 export default function Footer({ onNav }: FooterProps) {

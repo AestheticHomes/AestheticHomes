@@ -44,8 +44,8 @@ export default function HomePage({ onNav }: Props) {
   return (
     <>
       <Seo
-        title="Budget Interior Designer Chennai | 10 Years · 53 Projects"
-        description={`Aesthetic Homes — Chennai's top budget interior designer since 2015. Modular kitchens from ₹85k, wardrobes from ₹45k, full home interiors. 53 projects, 4.9★ Google rated. GSTIN: ${SITE.gstin}. Free site visit. Call ${CONTACT.phone1Display}.`}
+        title="Interior Design & Home Renovation Services in Chennai and Nellore"
+        description="Interior design and home renovation services in Chennai and Nellore by Aesthetic Homes."
         canonical={SITE.url}
         jsonLd={buildFaqSchema([...HOME_FAQS])}
       />
@@ -93,7 +93,7 @@ export default function HomePage({ onNav }: Props) {
             <span className="badge badge--gold">GSTIN Verified</span>
           </div>
 
-          {/* H1 — primary keyword: "Budget Interior Designer Chennai" */}
+          {/* H1 — primary local keyword phrase */}
           <h1
             style={{
               fontFamily: 'var(--f-serif)',
@@ -106,14 +106,14 @@ export default function HomePage({ onNav }: Props) {
               maxWidth: '18ch',
             }}
           >
-            Budget Interiors.<br />
-            <em style={{ color:'var(--c-gold)', fontStyle:'italic' }}>Luxury Feel.</em><br />
-            Chennai's Own.
+            Interior Design &amp; Home Renovation Services in Chennai
+            <br />
+            <em style={{ color:'var(--c-gold)', fontStyle:'italic' }}>Now Serving Nellore</em>
           </h1>
 
           <p style={{ fontSize:'var(--fs-base)', color:'var(--c-text-inv-dim)', maxWidth:'46ch', lineHeight:'var(--lh-loose)', marginBottom:'var(--sp-8)' }}>
             {SITE.yearsInBiz} years · {SITE.projectCount} homes · {SITE.rating}★ rated.
-            Expert modular kitchens, wardrobes and full home interiors across Chennai —
+            Expert modular kitchens, wardrobes and full home interiors across Chennai and Nellore —
             transparent pricing, zero hidden costs.
           </p>
 
@@ -260,8 +260,8 @@ export default function HomePage({ onNav }: Props) {
           <div className="container">
             <SectionHeader
               eyebrow="Service Areas"
-              title={<>Interior Designer <em>Near You</em> in Chennai</>}
-              subtitle="We serve all areas of Chennai and up to 100km radius — including Kanchipuram, Chengalpattu, and Pondicherry."
+              title={<>Interior Designer <em>Near You</em> in Chennai & Nellore</>}
+              subtitle="We serve all areas of Chennai and up to 100km radius — including Nellore, Kanchipuram, Chengalpattu, and Pondicherry."
               center
             />
             <div style={{ display:'flex', flexWrap:'wrap', gap:'var(--sp-2)', justifyContent:'center', marginTop:'var(--sp-8)' }} role="list" aria-label="Service areas">
@@ -273,6 +273,35 @@ export default function HomePage({ onNav }: Props) {
               <a href={CONTACT.waLink1} className="btn btn--navy" target="_blank" rel="noopener noreferrer" aria-label="Book a free site visit in your area">
                 Book Free Site Visit →
               </a>
+            </div>
+          </div>
+        </section>
+
+        {/* ── Local SEO Content Blocks ── */}
+        <section className="sec" aria-labelledby="local-seo-heading">
+          <div className="container">
+            <SectionHeader
+              eyebrow="Locations"
+              title={<>Interior Design Services in <em>Chennai & Nellore</em></>}
+              subtitle="Dedicated local teams for interior design, renovation and turnkey execution."
+            />
+            <div className="grid-auto-2">
+              <article className="card" style={{ padding: 'var(--sp-6)' }}>
+                <h2 style={{ fontFamily: 'var(--f-serif)', fontSize: 'var(--fs-xl)', color: 'var(--c-navy)', marginBottom: 'var(--sp-3)' }}>
+                  Interior Designers in Chennai
+                </h2>
+                <p style={{ color: 'var(--c-text-2)', lineHeight: 'var(--lh-relax)' }}>
+                  Our Chennai team handles modular kitchens, wardrobes, full-home interiors and turnkey apartment projects with detailed 3D planning, transparent costing and on-site supervision.
+                </p>
+              </article>
+              <article className="card" style={{ padding: 'var(--sp-6)' }}>
+                <h2 style={{ fontFamily: 'var(--f-serif)', fontSize: 'var(--fs-xl)', color: 'var(--c-navy)', marginBottom: 'var(--sp-3)' }}>
+                  Home Renovation in Nellore
+                </h2>
+                <p style={{ color: 'var(--c-text-2)', lineHeight: 'var(--lh-relax)' }}>
+                  We provide home renovation and remodeling in Nellore, including kitchen revamps, space planning, electrical and painting coordination, and complete interior upgrades for new and existing homes.
+                </p>
+              </article>
             </div>
           </div>
         </section>
