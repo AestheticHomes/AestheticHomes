@@ -7,13 +7,13 @@
  * Step 3 — Summary: cost breakdown with bar + pie charts + WhatsApp CTA.
  */
 
-import Seo            from '@/components/seo/Seo'
+'use client'
+
 import { PageHero }   from '@/components/ui'
 import KitchenRender  from '@/components/estimator/KitchenRender'
 import WardrobeRender from '@/components/estimator/WardrobeRender'
 import SummaryPanel   from '@/components/estimator/SummaryPanel'
 import useEstimator, { type EstimatorStep } from '@/components/estimator/store/estimatorStore'
-import { SITE } from '@/lib/constants'
 import { useCallback, useEffect } from 'react'
 
 const STAGE_LABEL: Record<EstimatorStep, string> = {
@@ -58,12 +58,6 @@ export default function EstimatorPage() {
 
   return (
     <>
-      <Seo
-        title="Interior Design Cost Estimator Chennai — Kitchen & Wardrobe Budget Calculator"
-        description={`Estimate interior design costs in Chennai with our interactive calculator. Modular kitchens, wardrobes — live 2D plan + instant cost breakdown. Aesthetic Homes, ${SITE.projectCount} projects, ${SITE.rating}★.`}
-        canonical={`${SITE.url}/estimator`}
-      />
-
       <PageHero
         eyebrow={STAGE_LABEL[step]}
         title={step === 'summary' ? <>Interior <em>Budget Summary</em></> : <>Interior <em>Budget Estimator</em></>}

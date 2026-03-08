@@ -11,6 +11,7 @@
  * <ProjectCard project={p} wide={i === 0} onClick={() => setDetail(p.slug.current)} />
  */
 
+import Image from 'next/image'
 import { imgUrl } from '@/lib/sanity'
 import { CATEGORY_META, STATUS_META } from '@/lib/constants'
 import { Badge } from './index'
@@ -42,11 +43,12 @@ export default function ProjectCard({ project, wide = false, onClick }: ProjectC
     >
       {/* Cover image */}
       {project.coverImage ? (
-        <img
+        <Image
           src={imgUrl(project.coverImage, wide ? 1200 : 600, wide ? 525 : 600)}
           alt={`${project.title} — interior design by Aesthetic Homes, ${project.location}`}
-          loading="lazy"
-          decoding="async"
+          fill
+          sizes={wide ? '(max-width: 1024px) 100vw, 1200px' : '(max-width: 1024px) 100vw, 600px'}
+          style={{ objectFit: 'cover', transition: 'transform var(--dur-slow) var(--ease)' }}
         />
       ) : (
         /* Placeholder when no cover image yet */

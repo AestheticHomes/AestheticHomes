@@ -27,10 +27,11 @@
  * • GSTIN shown — builds trust and confirms registered status.
  */
 
+'use client'
+
 import { useState } from 'react'
-import Seo, { buildFaqSchema } from '@/components/seo/Seo'
 import { PageHero } from '@/components/ui'
-import { SITE, CONTACT, CONTACT_FAQS } from '@/lib/constants'
+import { SITE, CONTACT } from '@/lib/constants'
 
 // ─── TYPES ────────────────────────────────────────────────────────────────────
 type FormState = {
@@ -104,13 +105,6 @@ export default function ContactPage() {
 
   return (
     <>
-      <Seo
-        title="Contact Aesthetic Homes — Free Site Visit Chennai"
-        description={`Contact Aesthetic Homes for a free interior design site visit in Chennai. WhatsApp ${CONTACT.phone1Display}. GSTIN: ${SITE.gstin}. Mon–Sat 9 AM–7 PM.`}
-        canonical={`${SITE.url}/contact`}
-        jsonLd={buildFaqSchema([...CONTACT_FAQS])}
-      />
-
       {/* ── 1. Hero ── */}
       <PageHero
         eyebrow="Get in Touch"

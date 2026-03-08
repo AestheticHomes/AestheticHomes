@@ -11,9 +11,9 @@
  * <ServiceCard service={svc} />
  */
 
+import Link from 'next/link'
 import { LinkButton } from './index'
 import { CONTACT } from '@/lib/constants'
-import type { ViewName } from '@/types'
 
 interface Service {
   id:           string
@@ -27,16 +27,15 @@ interface Service {
 interface Props {
   service:  Service
   compact?: boolean                  // homepage grid — smaller, no HomeFix link
-  onNav?:   (v: ViewName) => void    // for navigating to services page
 }
 
-export default function ServiceCard({ service: svc, compact, onNav }: Props) {
+export default function ServiceCard({ service: svc, compact }: Props) {
   if (compact) {
     return (
-      <button
+      <Link
+        href="/services"
         className="card card--clickable reveal"
         style={{ padding:'var(--sp-6)', textAlign:'left', width:'100%' }}
-        onClick={() => onNav?.('services')}
         aria-label={`Learn about ${svc.title}`}
       >
         <div style={{ fontSize:'1.6rem', marginBottom:'var(--sp-4)' }} aria-hidden="true">{svc.icon}</div>
@@ -49,7 +48,7 @@ export default function ServiceCard({ service: svc, compact, onNav }: Props) {
           </div>
         )}
         <p style={{ fontSize:'var(--fs-base)', color:'var(--c-text-2)', lineHeight:'var(--lh-relax)' }}>{svc.desc}</p>
-      </button>
+      </Link>
     )
   }
 

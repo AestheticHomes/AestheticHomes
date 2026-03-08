@@ -1,70 +1,25 @@
-/**
- * @file src/lib/sanity.ts
- * @description Sanity CMS client, image URL builder, and all GROQ queries.
- *
- * SETUP
- * ─────
- * 1. Create project at sanity.io
- * 2. Replace 'YOUR_PROJECT_ID' below with your actual project ID
- * 3. Add your domain to CORS origins in sanity.io/manage → API
- *
- * USAGE
- * ─────
- * import { sanityClient, QUERIES, imgUrl } from '@/lib/sanity'
- * const projects = await sanityClient.fetch<Project[]>(QUERIES.allProjects)
- * const src = imgUrl(project.coverImage, 800, 600)
- */
-
-import { createClient } from '@sanity/client'
+import { createClient } from 'next-sanity'
 import imageUrlBuilder from '@sanity/image-url'
 import type { SanityImage } from '@/types'
 
-// ─── CLIENT ───────────────────────────────────────────────────────────────────
-/**
- * Reads from .env.local in development, from host env vars in production.
- *
- * Required in .env.local:
- *   VITE_SANITY_PROJECT_ID=your_project_id
- *
- * Optional:
- *   VITE_SANITY_DATASET=production   (defaults to "production")
- *
- * Get your project ID from: sanity.io/manage → your project
- */
-const projectId = import.meta.env.VITE_SANITY_PROJECT_ID as string
-const dataset   = (import.meta.env.VITE_SANITY_DATASET as string) ?? 'production'
-export const SANITY_ENABLED = Boolean(projectId && projectId !== 'YOUR_PROJECT_ID')
+const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID ?? process.env.SANITY_PROJECT_ID ?? ''
+const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET ?? process.env.SANITY_DATASET ?? 'production'
+const safeProjectId = projectId || 'demo'
 
-// Guard: fail clearly in dev if env var is missing
-if (!projectId || projectId === 'YOUR_PROJECT_ID') {
-  console.error(
-    '[Sanity] Missing VITE_SANITY_PROJECT_ID.\n' +
-    'Create .env.local in your project root with:\n' +
-    '  VITE_SANITY_PROJECT_ID=your_project_id\n' +
-    'Get your ID from: https://sanity.io/manage'
-  )
-}
+export const SANITY_ENABLED = Boolean(projectId)
 
 export const sanityClient = createClient({
-  projectId,
+  projectId: safeProjectId,
   dataset,
   apiVersion: '2024-01-01',
-  useCdn:     true,   // true = fast CDN reads (slight delay after publish)
-                      // false = always fresh (use for preview/draft modes)
+  useCdn: true,
+  perspective: 'published',
 })
 
-// ─── IMAGE URL BUILDER ────────────────────────────────────────────────────────
 const builder = imageUrlBuilder(sanityClient)
 
-/**
- * Returns an optimised Sanity CDN image URL.
- * @param src   - Sanity image asset reference
- * @param w     - target width in pixels
- * @param h     - target height in pixels
- * @param mode  - 'crop' (default) | 'contain' | 'fill'
- */
 export const imgUrl = (
-  src:  SanityImage,
+  src: SanityImage,
   w = 800,
   h = 600,
   mode: 'crop' | 'contain' | 'fill' = 'crop'
@@ -73,31 +28,31 @@ export const imgUrl = (
   return builder.image(src).width(w).height(h).fit(fitMode).auto('format').url()
 }
 
-/** Returns a raw builder for custom transformations */
 export const imgBuilder = (src: SanityImage) => builder.image(src)
 
-// ─── SAFE FETCH ───────────────────────────────────────────────────────────────
-/**
- * Guarded wrapper around sanityClient.fetch().
- * Returns null immediately if SANITY_ENABLED is false.
- */
-export async function sanityFetch<T>(
-  query:   string,
+type SanityFetchArgs = {
+  query: string
   params?: Record<string, unknown>
-): Promise<T | null> {
-  if (!SANITY_ENABLED) return null
-  return sanityClient.fetch<T>(query, params ?? {})
+  revalidate?: number | false
 }
 
-// ─── GROQ QUERIES ─────────────────────────────────────────────────────────────
-/**
- * Centralised GROQ query store.
- * Functions accept parameters for dynamic queries.
- * All string queries can be called with sanityClient.fetch().
- */
-export const QUERIES = {
+export async function sanityFetch<T>({
+  query,
+  params = {},
+  revalidate = 3600,
+}: SanityFetchArgs): Promise<T | null> {
+  if (!SANITY_ENABLED) return null
 
-  /** Homepage: top 6 featured projects */
+  return sanityClient.fetch<T>(
+    query,
+    params,
+    revalidate === false
+      ? { cache: 'no-store' }
+      : { next: { revalidate } }
+  )
+}
+
+export const QUERIES = {
   featuredProjects: `
     *[_type=="project" && featured==true]
     | order(completionDate desc)[0...6] {
@@ -107,7 +62,6 @@ export const QUERIES = {
     }
   `,
 
-  /** Projects page: all projects, featured first */
   allProjects: `
     *[_type=="project"]
     | order(featured desc, completionDate desc) {
@@ -117,9 +71,8 @@ export const QUERIES = {
     }
   `,
 
-  /** Single project detail by slug */
-  projectBySlug: (slug: string) => `
-    *[_type=="project" && slug.current=="${slug}"][0] {
+  projectBySlug: `
+    *[_type=="project" && slug.current==$slug][0] {
       _id, title, slug, status, featured, category, bhkType,
       location, startDate, completionDate, duration, budget,
       shortDescription, description, coverImage, gallery,
@@ -129,7 +82,6 @@ export const QUERIES = {
     }
   `,
 
-  /** Homepage testimonials: only flagged for homepage */
   testimonials: `
     *[_type=="testimonial" && showOnHomepage==true]
     | order(date desc)[0...8] {
@@ -139,7 +91,6 @@ export const QUERIES = {
     }
   `,
 
-  /** All testimonials for reviews page */
   allTestimonials: `
     *[_type=="testimonial"]
     | order(date desc) {
@@ -149,7 +100,6 @@ export const QUERIES = {
     }
   `,
 
-  /** Blog listing: published only */
   publishedPosts: `
     *[_type=="blogPost" && status=="published"]
     | order(publishedAt desc) {
@@ -158,9 +108,8 @@ export const QUERIES = {
     }
   `,
 
-  /** Single blog post by slug */
-  postBySlug: (slug: string) => `
-    *[_type=="blogPost" && slug.current=="${slug}"][0] {
+  postBySlug: `
+    *[_type=="blogPost" && slug.current==$slug][0] {
       _id, title, slug, coverImage, body, excerpt,
       category, publishedAt, tags, readingTime,
       relatedProjects[]->{title, slug},
@@ -168,7 +117,6 @@ export const QUERIES = {
     }
   `,
 
-  /** About page: team members ordered by display order */
   teamMembers: `
     *[_type=="teamMember"]
     | order(order asc) {
@@ -177,7 +125,5 @@ export const QUERIES = {
     }
   `,
 
-  /** Global site settings singleton */
   siteSettings: `*[_type=="siteSettings"][0]`,
-
 } as const

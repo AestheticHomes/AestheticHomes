@@ -46,15 +46,64 @@ export default function Layout({ currentView, onNav, children }: LayoutProps) {
   const isOnline   = useOnlineStatus()
   const [animKey, setAnimKey] = useState(0)
   const prevView   = useRef<ViewName>(currentView)
+  const pageShellRef = useRef<HTMLElement>(null)
 
   /* Page transition + scroll-to-top on every view change */
   useEffect(() => {
     if (prevView.current !== currentView) {
       setAnimKey((k) => k + 1)
       prevView.current = currentView
-      window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior })
+      window.scrollTo({ top: 0, behavior: 'auto' })
     }
   }, [currentView])
+
+  /* Observe .reveal nodes so Server Components keep staggered animations */
+  useEffect(() => {
+    const root = pageShellRef.current
+    if (!root) return
+
+    const observed = new WeakSet<Element>()
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible')
+            observer.unobserve(entry.target)
+          }
+        })
+      },
+      { threshold: 0.12 }
+    )
+
+    const observeNode = (node: Element) => {
+      if (observed.has(node)) return
+      observed.add(node)
+      observer.observe(node)
+    }
+
+    const scan = (scanRoot: ParentNode) => {
+      scanRoot.querySelectorAll('.reveal').forEach((node) => observeNode(node))
+    }
+
+    scan(root)
+
+    const mutationObserver = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        mutation.addedNodes.forEach((node) => {
+          if (!(node instanceof Element)) return
+          if (node.classList.contains('reveal')) observeNode(node)
+          scan(node)
+        })
+      })
+    })
+
+    mutationObserver.observe(root, { childList: true, subtree: true })
+
+    return () => {
+      mutationObserver.disconnect()
+      observer.disconnect()
+    }
+  }, [animKey])
 
   return (
     <>
@@ -87,6 +136,7 @@ export default function Layout({ currentView, onNav, children }: LayoutProps) {
         id="main-content"
         className="page-shell"
         role="main"
+        ref={pageShellRef}
       >
         {/* Page enter animation — new key on every view change */}
         <div key={animKey} className="page-enter">

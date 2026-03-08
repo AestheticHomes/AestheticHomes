@@ -26,9 +26,8 @@
  * TO CHANGE LINKS:   edit HOMEFIX constant in src/lib/constants.ts.
  */
 
-import Seo from '@/components/seo/Seo'
 import { CtaStrip } from '@/components/ui'
-import { SITE, CONTACT, HOMEFIX } from '@/lib/constants'
+import { CONTACT, HOMEFIX } from '@/lib/constants'
 
 // ─── CATEGORY DATA ────────────────────────────────────────────────────────────
 const CATEGORIES = [
@@ -82,12 +81,6 @@ const TRUST_CHIPS = [
 export default function StorePage() {
   return (
     <>
-      <Seo
-        title="HomeFix Store — Modular Kitchens, Wardrobes & TV Units | Chennai"
-        description="Browse HomeFix modular furniture: kitchens from ₹85k, wardrobes from ₹45k, TV units from ₹18k. Flat-pack delivery 3–5 days, FREE installation in Chennai. By Aesthetic Homes."
-        canonical={`${SITE.url}/store`}
-      />
-
       {/* ── 1. Hero ── */}
       <div
         className="sec sec--navy"

@@ -130,7 +130,9 @@ export function usePwaInstall() {
  * if (!isOnline) return <OfflineBanner />
  */
 export function useOnlineStatus(): boolean {
-  const [isOnline, setIsOnline] = useState(navigator.onLine)
+  const [isOnline, setIsOnline] = useState(
+    typeof navigator === 'undefined' ? true : navigator.onLine
+  )
 
   useEffect(() => {
     const goOnline  = () => setIsOnline(true)
@@ -205,7 +207,7 @@ export function useSanity<T>(query: string, params?: Record<string, unknown>) {
     setLoading(true)
     setError(null)
 
-    sanityFetch<T>(query, params)
+    sanityFetch<T>({ query, params })
       .then((result) => {
         setData(result)
       })

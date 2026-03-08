@@ -1,3 +1,9 @@
 node_modules
 studio
 .codex-tmp
+.next
+out
+public/sw.js
+public/workbox-*.js
+public/sitemap.xml
+public/sitemap-*.xml

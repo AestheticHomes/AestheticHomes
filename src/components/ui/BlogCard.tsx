@@ -7,6 +7,7 @@
  * <BlogCard post={post} onClick={() => openPost(post.slug.current)} />
  */
 
+import Image from 'next/image'
 import { imgUrl } from '@/lib/sanity'
 import { Badge } from './index'
 import type { BlogPost } from '@/types'
@@ -47,11 +48,12 @@ export default function BlogCard({ post, onClick }: Props) {
       {/* Cover image */}
       <div style={{ aspectRatio:'16/9', overflow:'hidden', flexShrink:0 }}>
         {post.coverImage ? (
-          <img
+          <Image
             src={imgUrl(post.coverImage, 600, 338)}
             alt={`${post.title} — Aesthetic Homes blog`}
-            loading="lazy"
-            decoding="async"
+            width={600}
+            height={338}
+            sizes="(max-width: 768px) 100vw, 600px"
             style={{ width:'100%', height:'100%', objectFit:'cover', transition:'transform var(--dur-slow) var(--ease)' }}
           />
         ) : (
