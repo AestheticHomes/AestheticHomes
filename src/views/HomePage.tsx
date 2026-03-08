@@ -1,6 +1,6 @@
-import Link from 'next/link'
 import { TrustBar, SectionHeader, ProcessStep, FaqAccordion, CtaStrip } from '@/components/ui'
 import ServiceCard from '@/components/ui/ServiceCard'
+import type { ViewName } from '@/types'
 import {
   SITE,
   CONTACT,
@@ -11,7 +11,11 @@ import {
   SERVICE_AREAS,
 } from '@/lib/constants'
 
-export default function HomePage() {
+interface Props {
+  onNav: (v: ViewName) => void
+}
+
+export default function HomePage({ onNav }: Props) {
   return (
     <div>
       <section
@@ -91,13 +95,13 @@ export default function HomePage() {
           >
             Free Site Visit →
           </a>
-          <Link
-            href="/projects"
+          <button
+            onClick={() => onNav('projects')}
             className="btn btn--outline-inv btn--lg"
             aria-label={`View all ${SITE.projectCount} completed projects`}
           >
             View {SITE.projectCount} Projects
-          </Link>
+          </button>
         </div>
 
         <div
@@ -169,9 +173,13 @@ export default function HomePage() {
             ))}
           </div>
           <div style={{ marginTop: 'var(--sp-8)', textAlign: 'center' }}>
-            <Link href="/services" className="btn btn--outline-navy" aria-label="View all interior design services">
+            <button
+              onClick={() => onNav('services')}
+              className="btn btn--outline-navy"
+              aria-label="View all interior design services"
+            >
               View All Services →
-            </Link>
+            </button>
           </div>
         </div>
       </section>

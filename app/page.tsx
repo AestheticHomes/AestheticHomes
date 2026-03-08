@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import JsonLd from '@/components/seo/JsonLd'
-import HomePage from '@/views/HomePage'
+import HomePage from '@/views/LandingPage'
 import { HOME_FAQS } from '@/lib/constants'
 import { buildFaqSchema, buildPageMetadata } from '@/lib/seo'
 
@@ -18,7 +18,7 @@ export default function Page() {
   return (
     <>
       <JsonLd id="home-faq-schema" data={buildFaqSchema([...HOME_FAQS])} />
-      <HomePage />
+      <HomePage onNav={() => {}} />
     </>
   )
 }
