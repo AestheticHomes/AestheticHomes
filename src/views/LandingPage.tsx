@@ -1,3 +1,4 @@
+'use client'
 /**
  * @file src/views/HomePage.tsx
  * @description Primary landing page — conversion-optimised.
