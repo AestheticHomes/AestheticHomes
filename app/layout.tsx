@@ -1,25 +1,9 @@
 import type { Metadata, Viewport } from 'next'
-import { Playfair_Display, Plus_Jakarta_Sans } from 'next/font/google'
 import AppShell from '@/components/layout/AppShell'
 import JsonLd from '@/components/seo/JsonLd'
 import { CONTACT, SITE } from '@/lib/constants'
 import { localBusinessSchema, organizationSchema } from '@/lib/seo'
 import './globals.css'
-
-const playfair = Playfair_Display({
-  subsets: ['latin'],
-  variable: '--font-playfair',
-  display: 'swap',
-  weight: ['400', '500', '600', '700'],
-  style: ['normal', 'italic'],
-})
-
-const plusJakarta = Plus_Jakarta_Sans({
-  subsets: ['latin'],
-  variable: '--font-plus-jakarta',
-  display: 'swap',
-  weight: ['300', '400', '500', '600'],
-})
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
@@ -53,7 +37,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en-IN" className={`${playfair.variable} ${plusJakarta.variable}`}>
+    <html lang="en-IN">
       <head>
         <link rel="preconnect" href="https://cdn.sanity.io" />
       </head>

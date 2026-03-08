@@ -1,4 +1,29 @@
+import fs from 'node:fs'
+import path from 'node:path'
 import withPWAInit from 'next-pwa'
+
+function resolveWritableTempDir() {
+  const configured = process.env.TMPDIR || process.env.TMP || process.env.TEMP
+
+  if (configured) {
+    try {
+      fs.mkdirSync(configured, { recursive: true })
+      fs.accessSync(configured, fs.constants.W_OK)
+      return configured
+    } catch {
+      // Fall through to a project-local temp directory.
+    }
+  }
+
+  const localTmp = path.join(process.cwd(), '.tmp')
+  fs.mkdirSync(localTmp, { recursive: true })
+  return localTmp
+}
+
+const writableTmp = resolveWritableTempDir()
+process.env.TMPDIR = writableTmp
+process.env.TMP = writableTmp
+process.env.TEMP = writableTmp
 
 const withPWA = withPWAInit({
   dest: 'public',
