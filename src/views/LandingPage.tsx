@@ -25,9 +25,9 @@
  */
 
 import { useEffect, useRef, useState } from 'react'
+import Link from 'next/link'
 import Seo, { buildFaqSchema } from '@/components/seo/Seo'
 import { SITE, CONTACT, HOME_FAQS, SERVICE_AREAS } from '@/lib/constants'
-import type { ViewName } from '@/types'
 import '@/styles/landing.css'
 
 // ─── WHATSAPP SVG ─────────────────────────────────────────────────────────────
@@ -65,11 +65,7 @@ const DISPLAY_SERVICES = [
   { icon:'📐', title:'3D Visualization',       desc:'Photorealistic renders before a single nail is placed.',                          price:'Free with every project' },
 ] as const
 
-interface Props {
-  onNav: (v: ViewName) => void
-}
-
-export default function HomePage({ onNav }: Props) {
+export default function LandingPage() {
   // ── Scroll reveal ──
   const lpRef = useRef<HTMLDivElement>(null)
   useEffect(() => {
@@ -226,9 +222,9 @@ export default function HomePage({ onNav }: Props) {
               ))}
             </div>
             <div style={{ textAlign:'center', marginTop:32 }} className="lp-reveal">
-              <button className="lp-btn-ghost" onClick={() => onNav('services')}>
+              <Link href="/services" className="lp-btn-ghost">
                 View All Services →
-              </button>
+              </Link>
             </div>
           </div>
         </section>
@@ -326,13 +322,13 @@ export default function HomePage({ onNav }: Props) {
                   ))}
                 </div>
                 <div style={{ display:'flex', gap:12, flexWrap:'wrap', marginTop:32, alignItems:'center' }}>
-                  <button className="lp-btn-gold" onClick={() => onNav('estimator')}>
+                  <Link href="/estimator" className="lp-btn-gold">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/>
                       <line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="12" y2="14"/>
                     </svg>
                     Try the Free Estimator
-                  </button>
+                  </Link>
                   <span className="lp-est-note">No login · Takes 2 minutes</span>
                 </div>
               </div>
@@ -493,9 +489,9 @@ export default function HomePage({ onNav }: Props) {
             <a href={CONTACT.waLink1} className="lp-footer__link" target="_blank" rel="noopener">WhatsApp</a>
             <a href={`tel:${CONTACT.phone1}`} className="lp-footer__link">{CONTACT.phone1Display}</a>
             <a href={`mailto:${CONTACT.email}`} className="lp-footer__link">{CONTACT.email}</a>
-            <button className="lp-footer__link" style={{background:'none',border:'none',cursor:'pointer',padding:0}} onClick={() => onNav('projects')}>Projects</button>
-            <button className="lp-footer__link" style={{background:'none',border:'none',cursor:'pointer',padding:0}} onClick={() => onNav('services')}>Services</button>
-            <button className="lp-footer__link" style={{background:'none',border:'none',cursor:'pointer',padding:0}} onClick={() => onNav('contact')}>Contact</button>
+            <Link href="/projects" className="lp-footer__link" style={{background:'none',border:'none',cursor:'pointer',padding:0}}>Projects</Link>
+            <Link href="/services" className="lp-footer__link" style={{background:'none',border:'none',cursor:'pointer',padding:0}}>Services</Link>
+            <Link href="/contact" className="lp-footer__link" style={{background:'none',border:'none',cursor:'pointer',padding:0}}>Contact</Link>
           </div>
         </footer>
 
