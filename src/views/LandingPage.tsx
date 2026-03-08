@@ -453,6 +453,7 @@ export default function LandingPage() {
           <Link href="/services"  className="lp-footer__link">Services</Link>
           <Link href="/estimator" className="lp-footer__link">Estimator</Link>
           <Link href="/contact"   className="lp-footer__link">Contact</Link>
+          <Link href="/privacy-policy" className="lp-footer__link">Privacy Policy</Link>
         </div>
       </footer>
 
