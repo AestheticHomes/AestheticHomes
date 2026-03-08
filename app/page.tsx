@@ -1,5 +1,5 @@
-import LandingPage from '@/src/views/LandingPage'
+import HomePage from '@/src/views/HomePage'
 
 export default function Page() {
-  return <LandingPage />
+  return <HomePage/>
 }
