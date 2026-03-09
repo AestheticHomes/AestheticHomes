@@ -39,6 +39,18 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en-IN">
       <head>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-MRVK68CHD0"></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+
+              gtag('config', 'G-MRVK68CHD0');
+            `,
+          }}
+        />
         <link rel="preconnect" href="https://cdn.sanity.io" />
       </head>
       <body>
