@@ -45,7 +45,7 @@ export default function ProjectCard({ project, wide = false, onClick }: ProjectC
       {project.coverImage ? (
         <Image
           src={imgUrl(project.coverImage, wide ? 1200 : 600, wide ? 525 : 600)}
-          alt={`${project.title} — interior design by Aesthetic Homes, ${project.location}`}
+          alt={`${project.title} in ${project.location}, Chennai by Aesthetic Homes`}
           fill
           sizes={wide ? '(max-width: 1024px) 100vw, 1200px' : '(max-width: 1024px) 100vw, 600px'}
           style={{ objectFit: 'cover', transition: 'transform var(--dur-slow) var(--ease)' }}

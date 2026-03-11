@@ -1,45 +1,54 @@
-import type { Metadata, Viewport } from 'next'
-import AppShell from '@/components/layout/AppShell'
-import JsonLd from '@/components/seo/JsonLd'
-import { CONTACT, SITE } from '@/lib/constants'
-import { localBusinessSchema, organizationSchema } from '@/lib/seo'
-import './globals.css'
+import type { Metadata, Viewport } from "next";
+import AppShell from "@/components/layout/AppShell";
+import JsonLd from "@/components/seo/JsonLd";
+import { CONTACT, SITE } from "@/lib/constants";
+import { localBusinessSchema, organizationSchema } from "@/lib/seo";
+import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
   applicationName: SITE.name,
-  manifest: '/manifest.webmanifest',
+  manifest: "/manifest.webmanifest",
   icons: {
-    icon: [{ url: '/icons/icon-96.png', sizes: '96x96', type: 'image/png' }],
-    apple: [{ url: '/icons/icon-192.png', sizes: '192x192', type: 'image/png' }],
+    icon: [{ url: "/icons/icon-96.png", sizes: "96x96", type: "image/png" }],
+    apple: [
+      { url: "/icons/icon-192.png", sizes: "192x192", type: "image/png" },
+    ],
   },
   appleWebApp: {
     capable: true,
-    statusBarStyle: 'black-translucent',
+    statusBarStyle: "black-translucent",
     title: SITE.name,
   },
   other: {
-    'mobile-web-app-capable': 'yes',
-    'apple-mobile-web-app-capable': 'yes',
-    'apple-mobile-web-app-status-bar-style': 'black-translucent',
-    'apple-mobile-web-app-title': SITE.name,
-    'application-name': SITE.name,
-    'msapplication-TileColor': '#0F1923',
-    'msapplication-tap-highlight': 'no',
+    "mobile-web-app-capable": "yes",
+    "apple-mobile-web-app-capable": "yes",
+    "apple-mobile-web-app-status-bar-style": "black-translucent",
+    "apple-mobile-web-app-title": SITE.name,
+    "application-name": SITE.name,
+    "msapplication-TileColor": "#0F1923",
+    "msapplication-tap-highlight": "no",
   },
-}
+};
 
 export const viewport: Viewport = {
-  width: 'device-width',
+  width: "device-width",
   initialScale: 1,
-  themeColor: '#0F1923',
-}
+  themeColor: "#0F1923",
+};
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en-IN">
       <head>
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-MRVK68CHD0"></script>
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-MRVK68CHD0"
+        ></script>
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -52,12 +61,20 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           }}
         />
         <link rel="preconnect" href="https://cdn.sanity.io" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationSchema),
+          }}
+        />
       </head>
       <body>
-        <JsonLd id="ah-org-schema" data={organizationSchema} />
-        <JsonLd id="ah-local-schema" data={localBusinessSchema(CONTACT.address.area)} />
+        <JsonLd
+          id="ah-local-schema"
+          data={localBusinessSchema(CONTACT.address.area)}
+        />
         <AppShell>{children}</AppShell>
       </body>
     </html>
-  )
+  );
 }

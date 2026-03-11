@@ -89,9 +89,8 @@ export default function HomePage() {
           <div className="hp-hero__label">Interior Design Studio · Chennai · Est. 2015</div>
 
           <h1 className="hp-hero__h1">
-            We design homes that<br />
-            feel like they&apos;ve<br />
-            <em>always been yours.</em>
+            Interior Design & Home Renovation<br />
+            Services in Chennai
           </h1>
 
           <p className="hp-hero__sub">
@@ -137,7 +136,7 @@ export default function HomePage() {
         <div className="hp-container">
           <div className="hp-section-head hp-reveal">
             <span className="hp-eyebrow">Selected Work</span>
-            <h2 id="proj-heading" className="hp-h2">Homes we&apos;re<br /><em>proud of.</em></h2>
+            <h2 id="proj-heading" className="hp-h2">Recent Home Interior Projects in Chennai</h2>
           </div>
 
           <div className="hp-proj-grid">
@@ -160,7 +159,7 @@ export default function HomePage() {
                   <div className="hp-proj-card__cat">{p.cat}</div>
                 </div>
                 <div className="hp-proj-card__body">
-                  <div className="hp-proj-card__title">{p.title}</div>
+                  <h3 className="hp-proj-card__title">{p.title}</h3>
                   <div className="hp-proj-card__meta">{p.loc} · {p.year}</div>
                 </div>
               </div>
@@ -198,12 +197,15 @@ export default function HomePage() {
             <div className="hp-phil-story hp-reveal hp-d2">
               <span className="hp-eyebrow">About the Studio</span>
               <h2 id="phil-heading" className="hp-h2" style={{ marginTop:12 }}>
-                Built on one belief.
+                Why Choose Aesthetic Homes for Your Interiors?
               </h2>
               <p className="hp-phil-p">
                 Aesthetic Homes was founded in Chennai in 2015 with a conviction that
                 beautiful interiors shouldn&apos;t require a luxury budget — only the right
                 team, the right process, and complete honesty with the client.
+              </p>
+              <p className="hp-phil-p">
+                As one of the top interior designers in Chennai, we specialize in turnkey home interiors that seamlessly blend budget-friendly luxury with exceptional craftsmanship.
               </p>
               <p className="hp-phil-p">
                 We handle everything in-house. Our designer is your project manager.
@@ -229,7 +231,7 @@ export default function HomePage() {
         <div className="hp-container">
           <div className="hp-section-head hp-reveal">
             <span className="hp-eyebrow">Our Services</span>
-            <h2 id="svc-heading" className="hp-h2">Everything<br /><em>your home needs.</em></h2>
+            <h2 id="svc-heading" className="hp-h2">Our Custom Interior Design Services</h2>
           </div>
 
           <div className="hp-svc-grid">
@@ -255,7 +257,7 @@ export default function HomePage() {
         <div className="hp-container">
           <div className="hp-section-head hp-reveal">
             <span className="hp-eyebrow">How It Works</span>
-            <h2 id="process-heading" className="hp-h2">Simple from<br /><em>start to finish.</em></h2>
+            <h2 id="process-heading" className="hp-h2">Our Transparent 3-Step Design Process</h2>
           </div>
 
           <div className="hp-process-grid">

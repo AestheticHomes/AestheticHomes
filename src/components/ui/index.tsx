@@ -99,6 +99,7 @@ interface SectionHeaderProps {
   subtitle?: string
   center?:   boolean
   dark?:     boolean      // for use on navy backgrounds
+  id?:       string       // optional id for aria-labelledby
 }
 
 /**
@@ -110,11 +111,11 @@ interface SectionHeaderProps {
  *   subtitle="Browse completed interiors..."
  * />
  */
-export function SectionHeader({ eyebrow, title, subtitle, center, dark }: SectionHeaderProps) {
+export function SectionHeader({ eyebrow, title, subtitle, center, dark, id }: SectionHeaderProps) {
   return (
     <div className={`sec__header ${center ? 'sec__header--center' : ''}`}>
       <div className="sec__eyebrow">{eyebrow}</div>
-      <h2 className={`sec__title ${dark ? 'sec__title--inv' : ''}`}>{title}</h2>
+      <h2 id={id} className={`sec__title ${dark ? 'sec__title--inv' : ''}`}>{title}</h2>
       {subtitle && <p className={`sec__sub ${dark ? 'sec__sub--inv' : ''}`}>{subtitle}</p>}
     </div>
   )
