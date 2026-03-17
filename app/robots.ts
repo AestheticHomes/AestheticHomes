@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next'
-import { SITE } from '@/lib/constants'
+
+const CANONICAL_HOST = 'https://www.aesthetichomes.co.in'
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -7,7 +8,7 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: '*',
       allow: '/',
     },
-    sitemap: `${SITE.url}/sitemap.xml`,
-    host: SITE.url,
+    sitemap: `${CANONICAL_HOST}/sitemap.xml`,
+    host: CANONICAL_HOST,
   }
 }

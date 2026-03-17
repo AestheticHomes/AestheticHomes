@@ -32,6 +32,22 @@ export default function BottomNav({ currentView, onNav }: BottomNavProps) {
     >
       <div className="bottom-nav__items">
         {BOTTOM_NAV_ITEMS.map((item) => {
+          const isActive = currentView === item.id
+          const route = item.id === 'green' ? '/green' : undefined
+          const className = `bottom-nav__item${isActive ? ' active' : ''}${item.id === 'green' ? ' bottom-nav__item--green' : ''}`
+          const content = item.id === 'green'
+            ? (
+              <span className="bottom-nav__tab-inner">
+                <span className="bottom-nav__icon" aria-hidden="true">{item.icon}</span>
+                <span className="bottom-nav__label">{item.label}</span>
+              </span>
+            )
+            : (
+              <>
+                <span className="bottom-nav__icon" aria-hidden="true">{item.icon}</span>
+                <span className="bottom-nav__label">{item.label}</span>
+              </>
+            )
 
           /* External link (e.g. HomeFix Store) */
           if (item.external && item.href) {
@@ -39,13 +55,13 @@ export default function BottomNav({ currentView, onNav }: BottomNavProps) {
               <a
                 key={item.id}
                 href={item.href}
-                className="bottom-nav__item"
+                className={className}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={`${item.ariaLabel} — opens in new tab`}
+                data-route={route}
               >
-                <span className="bottom-nav__icon" aria-hidden="true">{item.icon}</span>
-                <span className="bottom-nav__label">{item.label}</span>
+                {content}
               </a>
             )
           }
@@ -54,13 +70,13 @@ export default function BottomNav({ currentView, onNav }: BottomNavProps) {
           return (
             <button
               key={item.id}
-              className={`bottom-nav__item ${currentView === item.id ? 'active' : ''}`}
+              className={className}
               onClick={() => onNav(item.id)}
               aria-label={item.ariaLabel}
-              aria-current={currentView === item.id ? 'page' : undefined}
+              aria-current={isActive ? 'page' : undefined}
+              data-route={route}
             >
-              <span className="bottom-nav__icon" aria-hidden="true">{item.icon}</span>
-              <span className="bottom-nav__label">{item.label}</span>
+              {content}
             </button>
           )
         })}

@@ -9,11 +9,13 @@ const VIEW_TO_PATH: Record<ViewName, string> = {
   home: '/',
   projects: '/projects',
   services: '/services',
+  green: '/green',
   about: '/about',
   blog: '/blog',
   contact: '/contact',
   estimator: '/estimator',
   store: '/store',
+  partners: '/partners',
 }
 
 const VALID_VIEWS = new Set<ViewName>(Object.keys(VIEW_TO_PATH) as ViewName[])

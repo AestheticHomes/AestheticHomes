@@ -26,6 +26,7 @@
  * is never hidden behind the fixed bottom nav.
  */
 
+import Link from 'next/link'
 import { SITE, CONTACT, SOCIAL, HOMEFIX } from '@/lib/constants'
 import { LinkButton } from '@/components/ui'
 import type { ViewName } from '@/types'
@@ -42,6 +43,7 @@ const COMPANY_LINKS: { label: string; view: ViewName }[] = [
   { label:'Services',      view:'services' },
   { label:'About Us',      view:'about' },
   { label:'Projects',      view:'projects' },
+  { label:'Partner With Us', view:'partners' },
   { label:'Blog',          view:'blog' },
   { label:'Contact',       view:'contact' },
   { label:'Cost Estimator',view:'estimator' },
@@ -85,12 +87,25 @@ export default function Footer({ onNav }: FooterProps) {
           {/* Trust chips */}
           <div className="site-footer__trust" role="list" aria-label="Trust signals">
             {[
-              `GSTIN: ${SITE.gstin}`,
-              `Est. ${SITE.founded}`,
-              `${SITE.rating}★ Google`,
-              `${SITE.projectCount}+ Projects`,
+              { label: `GSTIN: ${SITE.gstin}` },
+              { label: `Est. ${SITE.founded}` },
+              { label: `${SITE.rating}★ Google`, href: CONTACT.googleReviewUrl },
+              { label: `${SITE.projectCount}+ Projects` },
             ].map((chip) => (
-              <span key={chip} className="site-footer__trust-chip" role="listitem">{chip}</span>
+              chip.href ? (
+                <a
+                  key={chip.label}
+                  href={chip.href}
+                  className="site-footer__trust-chip"
+                  role="listitem"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {chip.label}
+                </a>
+              ) : (
+                <span key={chip.label} className="site-footer__trust-chip" role="listitem">{chip.label}</span>
+              )
             ))}
           </div>
 
@@ -112,6 +127,7 @@ export default function Footer({ onNav }: FooterProps) {
                 {s}
               </button>
             ))}
+            <Link href="/green">Green Solutions</Link>
           </div>
         </div>
 
@@ -141,6 +157,21 @@ export default function Footer({ onNav }: FooterProps) {
             </a>
           </div>
         </div>
+      </div>
+
+      {/* ── Geo-Entity & Local SEO: Service Areas ── */}
+      <div style={{
+        borderTop: 'var(--b-base)',
+        paddingTop: 'var(--sp-6)',
+        marginTop: 'var(--sp-6)',
+        color: 'var(--c-text-muted)'
+      }}>
+        <div style={{ fontSize: 'var(--fs-xs)', textTransform: 'uppercase', letterSpacing: 'var(--ls-wide)', marginBottom: 'var(--sp-3)', color: 'var(--c-text-inv-dim)' }}>
+          Major Service Areas in Chennai
+        </div>
+        <p style={{ fontSize: 'var(--fs-xs)', lineHeight: 'var(--lh-relax)', margin: 0 }}>
+          Interior Designers in Anna Nagar · Modular Kitchens in Velachery · Home Renovation in Besant Nagar · Turnkey Interiors in OMR · Wardrobe Designers in Adyar · Living Room Interiors in T Nagar · False Ceilings in Mylapore · Interior Decorators in Porur.
+        </p>
       </div>
 
       {/* ── Bottom Bar ── */}

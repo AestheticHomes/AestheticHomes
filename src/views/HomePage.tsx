@@ -15,18 +15,15 @@
  *  4. Services     — 6 cards, clean, no pricing (that's /landingpage's job)
  *  5. Process      — 3-step horizontal cards
  *  6. Soft CTA     — One WhatsApp + Estimator, no pressure
- *  7. Footer
  */
 
 import { useEffect, useRef } from 'react'
 import Link from 'next/link'
+import { CONTACT } from '@/lib/constants'
 import '@/styles/homepage.css'
 
 // ─── CONSTANTS ────────────────────────────────────────────────────────────────
 const PHONE   = '+917397330591'
-const PHONE_D = '+91 73973 30591'
-const EMAIL   = 'hello@aesthetichomes.net'
-const GSTIN   = '33XXXXX0000X1ZX' // ← replace with real GSTIN
 const WA      = `https://wa.me/${PHONE.replace('+','')}?text=Hi%20Aesthetic%20Homes%2C%20I%27d%20like%20to%20discuss%20my%20interior%20project`
 
 // ─── DATA ─────────────────────────────────────────────────────────────────────
@@ -117,8 +114,20 @@ export default function HomePage() {
             ].map((s, i) => (
               <div key={s.l} className="hp-stat" role="listitem">
                 {i > 0 && <div className="hp-stat__sep" aria-hidden="true" />}
-                <div className="hp-stat__n">{s.n}</div>
-                <div className="hp-stat__l">{s.l}</div>
+                <div>
+                  <div className="hp-stat__n">{s.n}</div>
+                  <div className="hp-stat__l">{s.l}</div>
+                  {s.l === 'Google Rating' && (
+                    <a
+                      href={CONTACT.googleReviewUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="review-cta"
+                    >
+                      ★ Write a Review
+                    </a>
+                  )}
+                </div>
               </div>
             ))}
           </div>
@@ -317,43 +326,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
-      {/* ══ 7. FOOTER ════════════════════════════════════════════════════════ */}
-      <footer className="hp-footer">
-        <div className="hp-footer__brand">
-          <div className="hp-footer__name">Aesthetic<span>Homes</span></div>
-          <div className="hp-footer__tagline">Interior Design Studio · Chennai</div>
-          <div className="hp-footer__gstin">GSTIN {GSTIN} · Kodambakkam, Chennai – 600024</div>
-        </div>
-        <nav className="hp-footer__nav" aria-label="Footer navigation">
-          <div className="hp-footer__col">
-            <div className="hp-footer__col-title">Studio</div>
-            <Link href="/about"    className="hp-footer__link">About</Link>
-            <Link href="/projects" className="hp-footer__link">Projects</Link>
-            <Link href="/services" className="hp-footer__link">Services</Link>
-            <Link href="/contact"  className="hp-footer__link">Contact</Link>
-          </div>
-          <div className="hp-footer__col">
-            <div className="hp-footer__col-title">Tools</div>
-            <Link href="/estimator"   className="hp-footer__link">Budget Estimator</Link>
-            <Link href="/blog"        className="hp-footer__link">Blog</Link>
-            <Link href="/landingpage" className="hp-footer__link">Get a Quote</Link>
-          </div>
-          <div className="hp-footer__col">
-            <div className="hp-footer__col-title">Contact</div>
-            <a href={WA}                   className="hp-footer__link" target="_blank" rel="noopener">WhatsApp</a>
-            <a href={`tel:${PHONE}`}       className="hp-footer__link">{PHONE_D}</a>
-            <a href={`mailto:${EMAIL}`}    className="hp-footer__link">{EMAIL}</a>
-          </div>
-        </nav>
-        <div className="hp-footer__bottom">
-          <span>© {new Date().getFullYear()} Aesthetic Homes · Chennai</span>
-          <div style={{ display:'flex', gap:20 }}>
-            <Link href="/privacy-policy" className="hp-footer__link">Privacy</Link>
-            <Link href="/terms"          className="hp-footer__link">Terms</Link>
-          </div>
-        </div>
-      </footer>
 
     </div>
   )

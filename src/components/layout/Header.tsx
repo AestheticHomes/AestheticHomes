@@ -19,8 +19,10 @@
  * TO ADD A NAV LINK: edit HEADER_NAV_LINKS in src/lib/constants.ts
  */
 
+import Link from 'next/link'
 import { SITE, CONTACT, HEADER_NAV_LINKS } from '@/lib/constants'
 import type { ViewName } from '@/types'
+import GreenAnnouncementBar from './GreenAnnouncementBar'
 
 interface HeaderProps {
   currentView: ViewName
@@ -29,80 +31,97 @@ interface HeaderProps {
 
 export default function Header({ currentView, onNav }: HeaderProps) {
   return (
-    <header className="site-header" role="banner">
-      <div className="site-header__inner">
+    <>
+      <GreenAnnouncementBar />
+      <header className="site-header" role="banner">
+        <div className="site-header__inner">
 
-        {/* ── Logo ── */}
-        <button
-          className="site-header__logo"
-          onClick={() => onNav('home')}
-          aria-label={`${SITE.name} — go to home page`}
-        >
-          Aesthetic<span>Homes</span>
-        </button>
-
-        {/* ── Desktop nav links ── */}
-        <nav className="site-header__nav" aria-label="Main navigation">
-          {HEADER_NAV_LINKS.map((link) => {
-            if (link.external && link.href) {
-              return (
-                <a
-                  key={link.id}
-                  href={link.href}
-                  className="site-header__nav-link"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`${link.label} — opens in new tab`}
-                >
-                  {link.label} ↗
-                </a>
-              )
-            }
-            return (
-              <button
-                key={link.id}
-                className={`site-header__nav-link ${currentView === link.id ? 'active' : ''}`}
-                onClick={() => onNav(link.id as ViewName)}
-                aria-current={currentView === link.id ? 'page' : undefined}
-              >
-                {link.label}
-              </button>
-            )
-          })}
-        </nav>
-
-        {/* ── Desktop CTA ── */}
-        <a
-          href={CONTACT.waLink1}
-          className="btn btn--gold site-header__cta-desk"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Get a free interior design quote on WhatsApp"
-        >
-          Free Quote
-        </a>
-
-        {/* ── Mobile: rating + compact CTA ── */}
-        <div style={{ display:'flex', alignItems:'center', gap:'var(--sp-2)' }}>
-          <div
-            className="site-header__rating"
-            aria-label={`${SITE.rating} star Google rating`}
+          {/* ── Logo ── */}
+          <button
+            className="site-header__logo"
+            onClick={() => onNav('home')}
+            aria-label={`${SITE.name} — go to home page`}
           >
-            <span className="site-header__rating-star" aria-hidden="true">★</span>
-            {SITE.rating}
-          </div>
+            Aesthetic<span>Homes</span>
+          </button>
+
+          {/* ── Desktop nav links ── */}
+          <nav className="site-header__nav" aria-label="Main navigation">
+            {HEADER_NAV_LINKS.map((link) => {
+              if (link.id === 'green') {
+                return (
+                  <Link
+                    key={link.id}
+                    href="/green"
+                    className={`nav-green-pill${currentView === 'green' ? ' nav-green-pill--active' : ''}`}
+                    aria-current={currentView === 'green' ? 'page' : undefined}
+                  >
+                    <span className="nav-green-pill__dot" aria-hidden="true" />
+                    Green
+                  </Link>
+                )
+              }
+
+              if (link.external && link.href) {
+                return (
+                  <a
+                    key={link.id}
+                    href={link.href}
+                    className="site-header__nav-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${link.label} — opens in new tab`}
+                  >
+                    {link.label} ↗
+                  </a>
+                )
+              }
+              return (
+                <button
+                  key={link.id}
+                  className={`site-header__nav-link ${currentView === link.id ? 'active' : ''}`}
+                  onClick={() => onNav(link.id as ViewName)}
+                  aria-current={currentView === link.id ? 'page' : undefined}
+                >
+                  {link.label}
+                </button>
+              )
+            })}
+          </nav>
+
+          {/* ── Desktop CTA ── */}
           <a
             href={CONTACT.waLink1}
-            className="site-header__cta-mob"
+            className="btn btn--gold site-header__cta-desk"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Get free quote on WhatsApp"
+            aria-label="Get a free interior design quote on WhatsApp"
           >
-            Quote
+            Free Quote
           </a>
-        </div>
 
-      </div>
-    </header>
+          {/* ── Mobile: rating + compact CTA ── */}
+          <div style={{ display:'flex', alignItems:'center', gap:'var(--sp-2)' }}>
+            <div
+              className="site-header__rating"
+              aria-label={`${SITE.rating} star Google rating`}
+            >
+              <span className="site-header__rating-star" aria-hidden="true">★</span>
+              {SITE.rating}
+            </div>
+            <a
+              href={CONTACT.waLink1}
+              className="site-header__cta-mob"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Get free quote on WhatsApp"
+            >
+              Quote
+            </a>
+          </div>
+
+        </div>
+      </header>
+    </>
   )
 }

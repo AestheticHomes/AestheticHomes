@@ -134,7 +134,6 @@ export const organizationSchema = {
       legalName: SITE.legalName,
       alternateName: [
         "Aesthetic Homes Chennai",
-        "Aesthetic Homes Nellore",
         "Aesthetic Homes Interiors",
       ],
       url: SITE.url,
@@ -145,7 +144,7 @@ export const organizationSchema = {
         height: 192,
       },
       image: SITE.ogImage,
-      description: `${SITE.name} provides premium interior design and home renovation services in Chennai and Nellore. Modular kitchens, wardrobes, TV units, and full turnkey execution.`,
+      description: `${SITE.name} provides premium interior design and home renovation services in Chennai. Modular kitchens, wardrobes, TV units, and full turnkey execution.`,
       foundingDate: String(SITE.founded),
       taxID: SITE.gstin,
       vatID: SITE.gstin,
@@ -159,7 +158,7 @@ export const organizationSchema = {
         "False Ceiling Design",
       ],
       award: ["Award-winning Interior Design Studio in Chennai"],
-      hasMap: "https://maps.app.goo.gl/PLACEHOLDER_LINK", // Agent: leave this placeholder for the user to update
+      hasMap: CONTACT.googleMapsUrl,
       telephone: [CONTACT.phone1Display],
       email: CONTACT.email,
       address: {
@@ -226,7 +225,7 @@ export const organizationSchema = {
             "Excellent interior design execution and modular kitchen setup in Chennai.",
         },
       ],
-      sameAs: [SOCIAL.instagram, SOCIAL.youtube, HOMEFIX.url, SITE.url],
+      sameAs: [CONTACT.googleMapsUrl, SOCIAL.instagram, SOCIAL.youtube],
       subOrganization: {
         "@type": "Organization",
         "@id": `${HOMEFIX.url}/#organization`,
@@ -312,6 +311,7 @@ export const localBusinessSchema = (area: string) => ({
   "@id": `${SITE.url}/interior-designer-${area.toLowerCase().replace(/\s+/g, "-")}/#localbusiness`,
   name: `Aesthetic Homes - Interior Designer in ${area}, Chennai`,
   url: `${SITE.url}/interior-designer-${area.toLowerCase().replace(/\s+/g, "-")}`,
+  hasMap: CONTACT.googleMapsUrl,
   logo: {
     "@type": "ImageObject",
     url: SITE.logo,
@@ -319,6 +319,11 @@ export const localBusinessSchema = (area: string) => ({
     height: 192,
   },
   telephone: CONTACT.phone1Display,
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: CONTACT.address.lat,
+    longitude: CONTACT.address.lng,
+  },
   address: {
     "@type": "PostalAddress",
     streetAddress: CONTACT.address.street,
@@ -350,6 +355,7 @@ export const localBusinessSchema = (area: string) => ({
     bestRating: "5",
     worstRating: "1",
   },
+  sameAs: [CONTACT.googleMapsUrl, SOCIAL.instagram, SOCIAL.youtube],
   parentOrganization: { "@id": `${SITE.url}/#organization` },
 });
 

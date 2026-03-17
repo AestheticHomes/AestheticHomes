@@ -158,7 +158,7 @@ export interface SiteSettings {
 /** All valid SPA view names */
 export type ViewName =
   | 'home' | 'projects' | 'services' | 'about'
-  | 'blog' | 'contact'  | 'estimator' | 'store'
+  | 'blog' | 'contact'  | 'estimator' | 'store' | 'partners' | 'green'
 
 /** Bottom nav / desktop nav item definition */
 export interface NavItem {

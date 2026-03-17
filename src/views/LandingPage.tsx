@@ -18,7 +18,6 @@
  *  9. Big CTA        — Emotional close
  * 10. Areas          — Local SEO tags
  * 11. FAQ            — Accordion
- * 12. Footer
  */
 
 import { useEffect, useRef, useState } from 'react'
@@ -28,8 +27,6 @@ import '@/styles/landing.css'
 // ─── CONSTANTS ────────────────────────────────────────────────────────────────
 const PHONE     = '+917397330591'
 const PHONE_DIS = '+91 73973 30591'
-const EMAIL     = 'hello@aesthetichomes.net'
-const GSTIN     = '33XXXXX0000X1ZX' // ← replace with real GSTIN
 const YEARS     = '10'
 const PROJECTS  = '53'
 const RATING    = '4.9'
@@ -440,22 +437,6 @@ export default function LandingPage() {
           </div>
         </div>
       </section>
-
-      {/* ══ 12. FOOTER ═══════════════════════════════════════════════════════ */}
-      <footer className="lp-footer">
-        <div className="lp-footer__name">Aesthetic<span>Homes</span></div>
-        <div className="lp-footer__gstin">GSTIN {GSTIN} · Kodambakkam, Chennai – 600024</div>
-        <div className="lp-footer__links">
-          <a href={WA_VISIT} className="lp-footer__link" target="_blank" rel="noopener">WhatsApp</a>
-          <a href={`tel:${PHONE}`} className="lp-footer__link">{PHONE_DIS}</a>
-          <a href={`mailto:${EMAIL}`} className="lp-footer__link">{EMAIL}</a>
-          <Link href="/projects"  className="lp-footer__link">Projects</Link>
-          <Link href="/services"  className="lp-footer__link">Services</Link>
-          <Link href="/estimator" className="lp-footer__link">Estimator</Link>
-          <Link href="/contact"   className="lp-footer__link">Contact</Link>
-          <Link href="/privacy-policy" className="lp-footer__link">Privacy Policy</Link>
-        </div>
-      </footer>
 
       {/* ══ FLOATING WA ══════════════════════════════════════════════════════ */}
       <a href={WA_VISIT} className="lp-float-wa" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">

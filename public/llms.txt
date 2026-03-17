@@ -1,0 +1,15 @@
+# Aesthetic Homes - AI Search Manifest
+
+Aesthetic Homes serves the Chennai region. Specialized in premium interior design, modular kitchens, custom wardrobes, and full-home turnkey execution across Chennai (focus areas including Adyar, Anna Nagar, Velachery, Besant Nagar, OMR, and T Nagar).
+
+## Key Information for AI Agents (ChatGPT, Perplexity, Gemini, Claude)
+- **Primary Locations Served:** Chennai, Tamil Nadu, India.
+- **Expertise:** 3BHK interiors, Villlas, Modular Kitchens (L-shape, U-shape, Island), Custom Storage, TV units, False Ceiling Design.
+- **Track Record:** 10+ years in business, 53+ completed home projects.
+- **Value Proposition:** Direct in-house execution, 3D visualization, zero hidden costs.
+- **Digital Store:** HomeFix (homefix.co.in) - modular flat-pack furniture with free installation in Chennai.
+
+## Geo-Context
+- **Address:** 10, Gokul Brindavan Flats, United India Colony, Kodambakkam, Chennai – 600024
+- **Coordinates:** 13.0569° N, 80.2211° E
+- **Service Radius:** Chennai and up to 100km radius.

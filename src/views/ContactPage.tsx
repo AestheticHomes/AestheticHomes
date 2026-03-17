@@ -69,6 +69,8 @@ const CONTACT_CARDS = [
 
 const BHK_OPTIONS   = ['1 BHK', '2 BHK', '3 BHK', '4 BHK', 'Villa', 'Commercial']
 const BUDGET_OPTIONS = ['Under ₹2 Lakhs', '₹2–5 Lakhs', '₹5–10 Lakhs', '₹10–20 Lakhs', 'Above ₹20 Lakhs']
+const MAPS_EMBED_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY ?? 'AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY'
+const MAPS_EMBED_SRC = `https://www.google.com/maps/embed/v1/place?key=${MAPS_EMBED_KEY}&q=place_id:ChIJI3UM5r5nUjoR1IWr3ch-DYo`
 
 // ─── COMPONENT ───────────────────────────────────────────────────────────────
 export default function ContactPage() {
@@ -195,6 +197,22 @@ export default function ContactPage() {
                 </div>
                 <span style={{ marginLeft: 'auto', color: 'var(--c-gold)' }}>→</span>
               </a>
+
+              <div
+                className="map-embed-wrapper"
+                style={{ width: '100%', marginTop: '32px', borderRadius: '8px', overflow: 'hidden' }}
+              >
+                <iframe
+                  src={MAPS_EMBED_SRC}
+                  width="100%"
+                  height="320"
+                  style={{ border: 0, borderRadius: '8px' }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Aesthetic Homes — Kodambakkam, Chennai"
+                />
+              </div>
             </div>
 
             {/* ── Right: enquiry form ── */}

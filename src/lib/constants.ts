@@ -45,10 +45,11 @@ export const CONTACT = {
     country: 'IN',
     full:    '10, Gokul Brindavan Flats, United India Colony, Kodambakkam, Chennai – 600024, Tamil Nadu',
     /** Coordinates for LocalBusiness schema and Maps */
-    lat:  13.0569,
-    lng:  80.2211,
+    lat:  13.0522,
+    lng:  80.2210,
   },
-  googleMapsUrl: 'https://maps.google.com/?q=Aesthetic+Homes+Kodambakkam+Chennai+600024',
+  googleMapsUrl: 'https://maps.google.com/?cid=ChIJI3UM5r5nUjoR1IWr3ch-DYo',
+  googleReviewUrl: 'https://search.google.com/local/writereview?placeid=ChIJI3UM5r5nUjoR1IWr3ch-DYo',
 } as const
 
 // ─── SOCIAL & PARTNER LINKS ───────────────────────────────────────────────────
@@ -68,13 +69,13 @@ export const HOMEFIX = {
 } as const
 
 // ─── NAVIGATION ───────────────────────────────────────────────────────────────
-/** Bottom nav items (mobile/tablet). Max 5 for thumb-reachability. */
+/** Bottom nav items (mobile/tablet). Green stays near the center without disturbing existing tab order. */
 export const BOTTOM_NAV_ITEMS: NavItem[] = [
   { id: 'home',     label: 'Home',     icon: '⌂',  ariaLabel: 'Go to home page' },
   { id: 'projects', label: 'Projects', icon: '▦',  ariaLabel: 'View our projects' },
+  { id: 'green',    label: 'Green',    icon: '◈',  ariaLabel: 'Explore sustainable interior solutions' },
   { id: 'services', label: 'Services', icon: '✦',  ariaLabel: 'Our services' },
   { id: 'store',    label: 'Store',    icon: '⬡',  ariaLabel: 'Shop on HomeFix', external: true, href: HOMEFIX.store },
-  { id: 'contact',  label: 'Contact',  icon: '◉',  ariaLabel: 'Contact us' },
 ]
 
 /** Desktop header nav links */
@@ -82,6 +83,8 @@ export const HEADER_NAV_LINKS = [
   { id: 'home'      as const, label: 'Home' },
   { id: 'projects'  as const, label: 'Projects' },
   { id: 'services'  as const, label: 'Services' },
+  { id: 'green'     as const, label: 'Green' },
+  { id: 'partners'  as const, label: 'For Architects' },
   { id: 'about'     as const, label: 'About' },
   { id: 'blog'      as const, label: 'Blog' },
   { id: 'estimator' as const, label: 'Estimator' },

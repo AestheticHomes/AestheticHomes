@@ -156,6 +156,16 @@
 .hp-stat__sep { width: 1px; height: 32px; background: rgba(200,169,110,0.15); margin: 0 20px; }
 .hp-stat__n { font-family: var(--f-serif); font-size: 1.4rem; font-weight: 600; color: var(--gold); line-height: 1; }
 .hp-stat__l { font-size: 0.66rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-top: 3px; }
+.review-cta {
+  display: block;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--color-accent, #b07d4a);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  margin-top: 4px;
+}
+.review-cta:hover { text-decoration: underline; }
 
 /* Scroll cue */
 .hp-hero__scroll {
