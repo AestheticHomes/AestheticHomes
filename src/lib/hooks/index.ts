@@ -130,11 +130,11 @@ export function usePwaInstall() {
  * if (!isOnline) return <OfflineBanner />
  */
 export function useOnlineStatus(): boolean {
-  const [isOnline, setIsOnline] = useState(
-    typeof navigator === 'undefined' ? true : navigator.onLine
-  )
+  const [isOnline, setIsOnline] = useState(true)
 
   useEffect(() => {
+    setIsOnline(typeof navigator !== 'undefined' ? navigator.onLine : true)
+
     const goOnline  = () => setIsOnline(true)
     const goOffline = () => setIsOnline(false)
     window.addEventListener('online',  goOnline)

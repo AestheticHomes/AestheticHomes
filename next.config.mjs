@@ -32,6 +32,18 @@ const withPWA = withPWAInit({
   disable: process.env.NODE_ENV === 'development',
   runtimeCaching: [
     {
+      // Force navigation requests (HTML) to hit the network first,
+      // falling back to cache if offline. This prevents false positive
+      // offline states caused by aggressive CacheFirst strategies on the index doc.
+      urlPattern: /.*/i,
+      handler: 'NetworkFirst',
+      options: {
+        cacheName: 'html-pages',
+        networkTimeoutSeconds: 3,
+        expiration: { maxEntries: 32, maxAgeSeconds: 24 * 60 * 60 },
+      },
+    },
+    {
       urlPattern: /^https:\/\/fonts\.(googleapis|gstatic)\.com\/.*/i,
       handler: 'CacheFirst',
       options: {
