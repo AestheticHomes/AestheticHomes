@@ -6,7 +6,6 @@
     "dev": "next dev",
     "build": "node scripts/next-build.mjs",
     "start": "next start",
-    "postbuild": "next-sitemap",
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
