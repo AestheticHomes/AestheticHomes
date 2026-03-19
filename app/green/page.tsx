@@ -186,6 +186,29 @@ const steps = [
 
 const certifications = ['GST Registered', 'In-house Installation Team', 'Termite-proof Materials', 'Low-VOC Options Available']
 
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'What are UPVC hollow board wardrobes?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: "UPVC hollow board wardrobes are made from PVC foam boards instead of plywood or MDF. They are 100% termite-proof, moisture-resistant, and require zero maintenance - ideal for Chennai's humid coastal climate.",
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Are UPVC board wardrobes more expensive than plywood?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'UPVC board wardrobes are priced similarly to or slightly above marine ply, but the lifetime cost is lower because they never need treatment, repainting, or replacement from moisture damage.',
+      },
+    },
+  ],
+}
+
 export default function GreenPage() {
   const schemaA = {
     '@type': 'LocalBusiness',
@@ -194,7 +217,7 @@ export default function GreenPage() {
     url: 'https://www.aesthetichomes.co.in/green',
     hasMap: 'https://maps.google.com/?cid=ChIJI3UM5r5nUjoR1IWr3ch-DYo',
     telephone: '+917397330591',
-    email: 'hello@aesthetichomes.net',
+    email: 'admin@aesthetichomes.co.in',
     address: {
       '@type': 'PostalAddress',
       streetAddress: '10, Gokul Brindavan Flats, United India Colony, Kodambakkam',
@@ -219,7 +242,16 @@ export default function GreenPage() {
       closes: '19:00',
     },
     priceRange: '₹₹',
+    currenciesAccepted: 'INR',
+    paymentAccepted: 'Cash, Bank Transfer, UPI',
+    openingHours: 'Mo-Sa 09:00-19:00',
     image: 'https://www.aesthetichomes.co.in/og/green.jpg',
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '4.9',
+      reviewCount: '53',
+      bestRating: '5',
+    },
     sameAs: [
       'https://maps.google.com/?cid=ChIJI3UM5r5nUjoR1IWr3ch-DYo',
       'https://www.instagram.com/aesthetichomes_in',
@@ -299,6 +331,10 @@ export default function GreenPage() {
             '@graph': [schemaA, schemaB, schemaC],
           }),
         }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <div className="g-container">
         <Breadcrumb
@@ -414,7 +450,7 @@ export default function GreenPage() {
           <p className="g-cta__body">Tell us what you're building — wardrobe, kitchen, partition, ceiling — and we'll recommend the right material for your budget and timeline.</p>
           <a href={WA_GREEN} className="g-btn g-btn--primary g-btn--lg">WhatsApp Us Now →</a>
           <p className="g-cta__note">Free site visit · No commitment</p>
-          <p className="g-cta__email">Or email <a href="mailto:hello@aesthetichomes.net" className="g-link">hello@aesthetichomes.net</a></p>
+          <p className="g-cta__email">Or email <a href="mailto:admin@aesthetichomes.co.in" className="g-link">admin@aesthetichomes.co.in</a></p>
         </div>
       </section>
 

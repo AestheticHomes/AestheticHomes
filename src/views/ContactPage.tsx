@@ -213,6 +213,77 @@ export default function ContactPage() {
                   title="Aesthetic Homes — Kodambakkam, Chennai"
                 />
               </div>
+
+              <div className="contact-trust">
+                <p className="contact-trust__label">
+                  Still deciding? See our recent work.
+                </p>
+                <div className="contact-trust__grid">
+                  <a
+                    href="https://www.youtube.com/@AestheticHomes_in"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="contact-trust__card"
+                  >
+                    <span style={{ fontSize: '24px' }}>▶</span>
+                    <div>
+                      <p style={{ fontWeight: 600, fontSize: '14px' }}>YouTube</p>
+                      <p style={{ fontSize: '12px', color: 'var(--color-muted,#666)' }}>
+                        Full project walkthroughs
+                      </p>
+                    </div>
+                  </a>
+                  <a
+                    href="https://www.instagram.com/aesthetichomes_in"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="contact-trust__card"
+                  >
+                    <span style={{ fontSize: '24px' }}>◎</span>
+                    <div>
+                      <p style={{ fontWeight: 600, fontSize: '14px' }}>Instagram</p>
+                      <p style={{ fontSize: '12px', color: 'var(--color-muted,#666)' }}>
+                        Daily reels & before/afters
+                      </p>
+                    </div>
+                  </a>
+                </div>
+                <style>{`
+                  .contact-trust {
+                    margin: 40px 0 0;
+                    padding: 32px;
+                    border: 1px solid var(--color-border, #e8e3dc);
+                    border-radius: 8px;
+                  }
+                  .contact-trust__label {
+                    font-size: 14px;
+                    font-weight: 600;
+                    margin-bottom: 20px;
+                    color: var(--color-text, #1a1a1a);
+                  }
+                  .contact-trust__grid {
+                    display: flex;
+                    gap: 16px;
+                    flex-wrap: wrap;
+                  }
+                  .contact-trust__card {
+                    display: flex;
+                    align-items: center;
+                    gap: 14px;
+                    padding: 16px 20px;
+                    border: 1px solid var(--color-border, #e8e3dc);
+                    border-radius: 8px;
+                    text-decoration: none;
+                    color: var(--color-text, #1a1a1a);
+                    flex: 1;
+                    min-width: 180px;
+                    transition: box-shadow .2s;
+                  }
+                  .contact-trust__card:hover {
+                    box-shadow: 0 4px 16px rgba(0,0,0,.08);
+                  }
+                `}</style>
+              </div>
             </div>
 
             {/* ── Right: enquiry form ── */}

@@ -124,9 +124,10 @@ export default function AboutPage({ team }: AboutPageProps) {
                     {member.photo ? (
                       <Image
                         src={imgUrl(member.photo, 144, 144, 'crop')}
-                        alt={member.name}
+                        alt={`Portrait of ${member.name}, ${member.role} at Aesthetic Homes Chennai`}
                         width={72}
                         height={72}
+                        loading="lazy"
                         style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                       />
                     ) : (

@@ -18,15 +18,15 @@ export const SITE = {
   legalName:     'Aesthetic Homes Interiors and Engineering Services',
   tagline:       '10 Years. 53 Homes. Crafted for Life.',
   taglineSub:    'Budget-Friendly Luxury Interiors Across Chennai',
-  url:           'https://aesthetichomes.co.in',
-  logo:          'https://aesthetichomes.co.in/icons/icon-192.png',
-  ogImage:       'https://aesthetichomes.co.in/og-image.jpg',
+  url:           'https://www.aesthetichomes.co.in',
+  logo:          'https://www.aesthetichomes.co.in/icons/icon-192.png',
+  ogImage:       'https://www.aesthetichomes.co.in/og-image.jpg',
   gstin:         '33BNMPA8199N1ZB',
   founded:       2015,
   yearsInBiz:    10,
   projectCount:  53,
   rating:        4.9,
-  reviewCount:   50,
+  reviewCount:   53,
 } as const
 
 // ─── CONTACT ──────────────────────────────────────────────────────────────────

@@ -20,6 +20,8 @@
 import { useEffect, useRef } from 'react'
 import Link from 'next/link'
 import { CONTACT } from '@/lib/constants'
+import InstagramEmbed from '../../app/components/InstagramEmbed'
+import YouTubeEmbed from '../../app/components/YouTubeEmbed'
 import '@/styles/homepage.css'
 
 // ─── CONSTANTS ────────────────────────────────────────────────────────────────
@@ -186,6 +188,147 @@ export default function HomePage() {
         </div>
       </section>
 
+      <section className="social-proof-section" aria-labelledby="social-proof-heading">
+        <div className="sp-container">
+          <p className="sp-eyebrow">Real Work · Real Chennai Homes</p>
+          <h2 id="social-proof-heading" className="sp-title">Watch our projects come to life.</h2>
+          <p className="sp-sub">
+            Every video and reel below is from a real Aesthetic Homes
+            project - filmed on site, across Chennai homes. Modular
+            kitchens, wardrobes, full home interiors and more.
+          </p>
+
+          <div className="sp-grid">
+            <div className="sp-item sp-item--wide">
+              <p className="sp-item__label">
+                📹 Full Project Walkthrough · Chennai Home Interior
+              </p>
+              {/* TODO: Replace with real YouTube video ID from https://www.youtube.com/@AestheticHomes_in */}
+              <YouTubeEmbed
+                videoId="REPLACE_WITH_REAL_VIDEO_ID"
+                title="Full home interior project walkthrough — Aesthetic Homes Chennai"
+              />
+              <p className="sp-item__caption">
+                Watch the complete transformation of a Chennai home -
+                from bare walls to fully finished interiors by our team.
+              </p>
+            </div>
+
+            <div className="sp-item">
+              <p className="sp-item__label">
+                📸 Modular Kitchen Install · Anna Nagar
+              </p>
+              {/* TODO: Replace with real Instagram reel URL from https://www.instagram.com/aesthetichomes_in */}
+              <InstagramEmbed
+                postUrl="REPLACE_WITH_REAL_INSTAGRAM_REEL_URL"
+                caption="Modular kitchen installation in Anna Nagar, Chennai"
+              />
+            </div>
+
+            <div className="sp-item">
+              <p className="sp-item__label">
+                📸 Wardrobe Build · Velachery
+              </p>
+              {/* TODO: Replace with real Instagram reel URL from https://www.instagram.com/aesthetichomes_in */}
+              <InstagramEmbed
+                postUrl="REPLACE_WITH_REAL_INSTAGRAM_REEL_URL"
+                caption="Custom wardrobe installation in Velachery, Chennai"
+              />
+            </div>
+          </div>
+
+          <div className="sp-follow">
+            <a
+              href="https://www.youtube.com/@AestheticHomes_in"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="sp-follow__link"
+            >
+              ▶ Watch more on YouTube
+            </a>
+            <a
+              href="https://www.instagram.com/aesthetichomes_in"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="sp-follow__link"
+            >
+              ◎ Follow on Instagram
+            </a>
+          </div>
+        </div>
+
+        <style>{`
+          .social-proof-section {
+            padding: 96px 0;
+            border-top: 1px solid var(--color-border, #e8e3dc);
+          }
+          .sp-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+          }
+          .sp-eyebrow {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: .15em;
+            text-transform: uppercase;
+            color: var(--color-accent, #b07d4a);
+            margin-bottom: 14px;
+          }
+          .sp-title {
+            font-size: clamp(26px, 3.5vw, 40px);
+            font-weight: 400;
+            margin-bottom: 16px;
+            font-family: var(--font-display, Georgia, serif);
+          }
+          .sp-sub {
+            font-size: 16px;
+            line-height: 1.7;
+            color: var(--color-muted, #666);
+            max-width: 600px;
+            margin-bottom: 48px;
+          }
+          .sp-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+          }
+          .sp-item--wide { grid-column: 1 / -1; }
+          .sp-item__label {
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--color-text, #1a1a1a);
+          }
+          .sp-item__caption {
+            font-size: 13px;
+            color: var(--color-muted, #666);
+            margin-top: 12px;
+            line-height: 1.6;
+          }
+          .sp-follow {
+            display: flex;
+            gap: 24px;
+            margin-top: 48px;
+            flex-wrap: wrap;
+          }
+          .sp-follow__link {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--color-text, #1a1a1a);
+            text-decoration: none;
+            border-bottom: 1px solid currentColor;
+            padding-bottom: 2px;
+          }
+          .sp-follow__link:hover { opacity: .7; }
+          @media (max-width: 768px) {
+            .sp-grid { grid-template-columns: 1fr; }
+            .sp-item--wide { grid-column: 1; }
+            .social-proof-section { padding: 64px 0; }
+          }
+        `}</style>
+      </section>
+
       {/* ══ 3. PHILOSOPHY ════════════════════════════════════════════════════ */}
       <section className="hp-philosophy" aria-labelledby="phil-heading">
         <div className="hp-container">
@@ -257,6 +400,14 @@ export default function HomePage() {
             <Link href="/services" className="hp-btn-outline">
               View All Services &amp; Pricing →
             </Link>
+            <div style={{ display: 'flex', gap: 18, justifyContent: 'center', flexWrap: 'wrap', marginTop: 18 }}>
+              <Link href="/green" className="hp-text-link">
+                Explore Green Solutions →
+              </Link>
+              <Link href="/partners" className="hp-text-link">
+                Partner With Us →
+              </Link>
+            </div>
           </div>
         </div>
       </section>

@@ -6,6 +6,37 @@ import { buildBreadcrumbSchema, buildFaqSchema, buildPageMetadata } from '@/lib/
 
 export const revalidate = 86400
 
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'What is the cost of a modular kitchen in Chennai?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Modular kitchen costs in Chennai start from ₹85,000 for a basic L-shape layout. Full modular kitchens with premium hardware range from ₹1.5-3 lakhs depending on size and finish.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What is the cost of a wardrobe in Chennai?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Wardrobes in Chennai start from ₹45,000 for a standard 2-door sliding unit. Floor-to-ceiling wardrobes with internal fittings range from ₹80,000-1.5 lakhs.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Do you do commercial interiors?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes. Aesthetic Homes handles offices, retail spaces, and hospitality interiors across Chennai with the same in-house team and fixed-price model.',
+      },
+    },
+  ],
+}
+
 export async function generateMetadata(): Promise<Metadata> {
   return buildPageMetadata('/services', {
     title: 'Interior Design Services Chennai - Modular Kitchen, Wardrobe, Full Home',
@@ -16,6 +47,10 @@ export async function generateMetadata(): Promise<Metadata> {
 export default function Page() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <JsonLd id="services-faq-schema" data={buildFaqSchema([...SERVICES_FAQS])} />
       <JsonLd
         id="services-breadcrumb-schema"

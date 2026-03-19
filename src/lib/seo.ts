@@ -202,6 +202,7 @@ export const organizationSchema = {
           closes: "19:00",
         },
       ],
+      openingHours: "Mo-Sa 09:00-19:00",
       priceRange: "₹₹₹",
       currenciesAccepted: "INR",
       paymentAccepted: "Cash, UPI, Bank Transfer, Cheque",
@@ -312,6 +313,10 @@ export const localBusinessSchema = (area: string) => ({
   name: `Aesthetic Homes - Interior Designer in ${area}, Chennai`,
   url: `${SITE.url}/interior-designer-${area.toLowerCase().replace(/\s+/g, "-")}`,
   hasMap: CONTACT.googleMapsUrl,
+  priceRange: "₹₹",
+  currenciesAccepted: "INR",
+  paymentAccepted: "Cash, Bank Transfer, UPI",
+  openingHours: "Mo-Sa 09:00-19:00",
   logo: {
     "@type": "ImageObject",
     url: SITE.logo,

@@ -11,6 +11,7 @@
  * <ServiceCard service={svc} />
  */
 
+import type { ReactNode } from 'react'
 import Link from 'next/link'
 import { LinkButton } from './index'
 import { CONTACT } from '@/lib/constants'
@@ -27,9 +28,10 @@ interface Service {
 interface Props {
   service:  Service
   compact?: boolean                  // homepage grid — smaller, no HomeFix link
+  afterDescription?: ReactNode
 }
 
-export default function ServiceCard({ service: svc, compact }: Props) {
+export default function ServiceCard({ service: svc, compact, afterDescription }: Props) {
   if (compact) {
     return (
       <Link
@@ -69,6 +71,8 @@ export default function ServiceCard({ service: svc, compact }: Props) {
         <p style={{ fontSize:'var(--fs-base)', color:'var(--c-text-2)', lineHeight:'var(--lh-relax)', marginBottom:'var(--sp-4)' }}>
           {svc.desc}
         </p>
+
+        {afterDescription}
 
         <div style={{ display:'flex', gap:'var(--sp-3)', flexWrap:'wrap' }}>
           <LinkButton

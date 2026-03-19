@@ -50,9 +50,10 @@ export default function BlogCard({ post, onClick }: Props) {
         {post.coverImage ? (
           <Image
             src={imgUrl(post.coverImage, 600, 338)}
-            alt={`${post.title} — Aesthetic Homes blog`}
+            alt={`Interior design blog cover by Aesthetic Homes Chennai: ${post.title}`}
             width={600}
             height={338}
+            loading="lazy"
             sizes="(max-width: 768px) 100vw, 600px"
             style={{ width:'100%', height:'100%', objectFit:'cover', transition:'transform var(--dur-slow) var(--ease)' }}
           />

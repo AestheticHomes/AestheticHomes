@@ -147,10 +147,29 @@ export default function Footer({ onNav }: FooterProps) {
         <div>
           <div className="site-footer__col-title">Contact</div>
           <div className="site-footer__col-links">
-            <a href={`tel:${CONTACT.phone1}`} aria-label={`Call ${CONTACT.phone1Display}`}>{CONTACT.phone1Display}</a>
-            <a href={`mailto:${CONTACT.email}`} aria-label="Email us">{CONTACT.email}</a>
             <address style={{ fontStyle:'normal', fontSize:'var(--fs-xs)', color:'var(--c-text-inv-dim)', lineHeight:'var(--lh-loose)' }}>
-              {CONTACT.address.full}
+              <strong style={{ display:'block', color:'var(--c-text-inv)', fontSize:'var(--fs-sm)', marginBottom:'var(--sp-1)' }}>
+                {SITE.name}
+              </strong>
+              <span>10, Gokul Brindavan Flats, United India Colony,</span>
+              <br />
+              <span>Kodambakkam, Chennai – 600024, Tamil Nadu</span>
+              <br />
+              <a
+                href={`tel:${CONTACT.phone1}`}
+                aria-label={`Call ${CONTACT.phone1Display}`}
+                style={{ color:'inherit', textDecoration:'none' }}
+              >
+                {CONTACT.phone1Display}
+              </a>
+              <br />
+              <a
+                href={`mailto:${CONTACT.email}`}
+                aria-label="Email us"
+                style={{ color:'inherit', textDecoration:'none' }}
+              >
+                {CONTACT.email}
+              </a>
             </address>
             <a href={CONTACT.googleMapsUrl} target="_blank" rel="noopener noreferrer" aria-label="Open in Google Maps" style={{ color:'var(--c-gold)', fontSize:'var(--fs-xs)' }}>
               Open in Google Maps →

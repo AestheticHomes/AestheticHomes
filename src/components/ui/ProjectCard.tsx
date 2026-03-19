@@ -26,6 +26,15 @@ interface ProjectCardProps {
 export default function ProjectCard({ project, wide = false, onClick }: ProjectCardProps) {
   const cat    = CATEGORY_META[project.category] ?? { emoji: '🏠', label: project.category }
   const status = STATUS_META[project.status]     ?? STATUS_META.completed
+  const projectAlt = (
+    cat.label === 'Kitchen'
+      ? `Modular kitchen interior in Chennai by Aesthetic Homes - ${project.location}`
+      : cat.label === 'Wardrobe'
+        ? `Custom wardrobe design in Chennai by Aesthetic Homes - ${project.location}`
+        : cat.label === 'Bedroom'
+          ? `Bedroom interior design Chennai by Aesthetic Homes - ${project.location}`
+          : `Home interior project in ${project.location} Chennai - Aesthetic Homes`
+  )
 
   return (
     <article
@@ -45,8 +54,10 @@ export default function ProjectCard({ project, wide = false, onClick }: ProjectC
       {project.coverImage ? (
         <Image
           src={imgUrl(project.coverImage, wide ? 1200 : 600, wide ? 525 : 600)}
-          alt={`${project.title} in ${project.location}, Chennai by Aesthetic Homes`}
-          fill
+          alt={projectAlt}
+          width={wide ? 1200 : 600}
+          height={wide ? 525 : 750}
+          loading="lazy"
           sizes={wide ? '(max-width: 1024px) 100vw, 1200px' : '(max-width: 1024px) 100vw, 600px'}
           style={{ objectFit: 'cover', transition: 'transform var(--dur-slow) var(--ease)' }}
         />

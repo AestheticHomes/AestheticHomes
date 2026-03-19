@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import InstagramEmbed from '../../app/components/InstagramEmbed'
 import ServiceCard from '@/components/ui/ServiceCard'
 import { PageHero, ProcessStep, SectionHeader, CtaStrip } from '@/components/ui'
 import { CONTACT, SERVICES, PROCESS_STEPS } from '@/lib/constants'
@@ -59,7 +60,34 @@ export default function ServicesPage() {
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--sp-2)' }}>
             {SERVICES.map((svc, i) => (
               <div key={svc.id} className={`reveal reveal-delay-${(i % 4) + 1}`}>
-                <ServiceCard service={{ ...svc }} />
+                <ServiceCard
+                  service={{ ...svc }}
+                  afterDescription={
+                    svc.id === 'kitchen' ? (
+                      <div className="svc-embed">
+                        <p className="svc-embed__label">
+                          See a modular kitchen installation in Chennai →
+                        </p>
+                        {/* TODO: Replace with kitchen reel URL from Instagram */}
+                        <InstagramEmbed
+                          postUrl="REPLACE_WITH_KITCHEN_REEL_URL"
+                          caption="Modular kitchen installation by Aesthetic Homes, Chennai"
+                        />
+                      </div>
+                    ) : svc.id === 'wardrobe' ? (
+                      <div className="svc-embed">
+                        <p className="svc-embed__label">
+                          Watch a wardrobe build in Chennai →
+                        </p>
+                        {/* TODO: Replace with wardrobe reel URL from Instagram */}
+                        <InstagramEmbed
+                          postUrl="REPLACE_WITH_WARDROBE_REEL_URL"
+                          caption="Custom wardrobe build by Aesthetic Homes, Chennai"
+                        />
+                      </div>
+                    ) : undefined
+                  }
+                />
               </div>
             ))}
           </div>
@@ -107,6 +135,16 @@ export default function ServicesPage() {
         secondaryLabel={`Call ${CONTACT.phone1Display}`}
         secondaryTel={CONTACT.phone1}
       />
+
+      <style>{`
+        .svc-embed { margin-top: 24px; max-width: 420px; }
+        .svc-embed__label {
+          font-size: 13px;
+          font-weight: 600;
+          color: var(--color-accent, #b07d4a);
+          margin-bottom: 12px;
+        }
+      `}</style>
     </div>
   )
 }
