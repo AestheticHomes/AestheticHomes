@@ -205,7 +205,7 @@ export default function HomePage() {
               </p>
               {/* TODO: Replace with real YouTube video ID from https://www.youtube.com/@AestheticHomes_in */}
               <YouTubeEmbed
-                videoId="REPLACE_WITH_REAL_VIDEO_ID"
+                videoId="13Pt6fWno7s"
                 title="Full home interior project walkthrough — Aesthetic Homes Chennai"
               />
               <p className="sp-item__caption">
@@ -220,7 +220,7 @@ export default function HomePage() {
               </p>
               {/* TODO: Replace with real Instagram reel URL from https://www.instagram.com/aesthetichomes_in */}
               <InstagramEmbed
-                postUrl="REPLACE_WITH_REAL_INSTAGRAM_REEL_URL"
+                postUrl="https://www.instagram.com/reel/DKfHxLnP9jH/"
                 caption="Modular kitchen installation in Anna Nagar, Chennai"
               />
             </div>
@@ -231,7 +231,7 @@ export default function HomePage() {
               </p>
               {/* TODO: Replace with real Instagram reel URL from https://www.instagram.com/aesthetichomes_in */}
               <InstagramEmbed
-                postUrl="REPLACE_WITH_REAL_INSTAGRAM_REEL_URL"
+                postUrl="https://www.instagram.com/reel/DV9L9dyE9Yu/"
                 caption="Custom wardrobe installation in Velachery, Chennai"
               />
             </div>

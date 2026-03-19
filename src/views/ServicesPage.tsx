@@ -70,7 +70,7 @@ export default function ServicesPage() {
                         </p>
                         {/* TODO: Replace with kitchen reel URL from Instagram */}
                         <InstagramEmbed
-                          postUrl="REPLACE_WITH_KITCHEN_REEL_URL"
+                          postUrl="https://www.instagram.com/reel/DCz0eQgz7ck/"
                           caption="Modular kitchen installation by Aesthetic Homes, Chennai"
                         />
                       </div>
@@ -81,7 +81,7 @@ export default function ServicesPage() {
                         </p>
                         {/* TODO: Replace with wardrobe reel URL from Instagram */}
                         <InstagramEmbed
-                          postUrl="REPLACE_WITH_WARDROBE_REEL_URL"
+                          postUrl="https://www.instagram.com/reel/C-qjl8OSqRi/"
                           caption="Custom wardrobe build by Aesthetic Homes, Chennai"
                         />
                       </div>
